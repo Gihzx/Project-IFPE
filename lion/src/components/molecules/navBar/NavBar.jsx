@@ -3,7 +3,6 @@ import "../navBar/navBar.css";
 import { FiAlignJustify } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
 import { FiUser } from "react-icons/fi";
-import { FiSearch } from "react-icons/fi";
 function NavBar() {
   return (
     <>
