@@ -1,7 +1,9 @@
+import NavBar from "./components/molecules/navBar/NavBar";
+
 function Home() {
   return (
     <>
-      <h1>Eu ficarei com todos os componentes</h1>
+      <NavBar />
     </>
   );
 }
