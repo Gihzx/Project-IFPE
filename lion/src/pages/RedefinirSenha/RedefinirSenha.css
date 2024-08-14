@@ -1,4 +1,3 @@
-
 html, body {
     margin: 0;
     padding: 0;
@@ -63,11 +62,11 @@ html, body {
     justify-content: center;
 }
 
-.input-field input[type="email"]{
+.input-field input[type="password"]{
     width: 15vw;
 }
 
-.input-field input[type="password"]{
+.input-field input[type="confirm-password"]{
     width: 15vw;
 }
 

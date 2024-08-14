@@ -1,7 +1,7 @@
-import "./login.css";
+import "./RegistrarConta.css";
 import Logo from "../../assets/LeonsEletronico.jpg";
 
-function Login() {
+function RegistrarConta() {
   return (
     <div className="container-page">
       <div className="container-logo-form">
@@ -10,10 +10,16 @@ function Login() {
       </div>
 
       <div className="container-form">
-        <h3>Login</h3>
+        <h6>Registrar Conta</h6>
 
-        <div className="row"></div>
         <form>
+          <div className="row">
+            <div className="input-field col s12">
+              <input id="Nome" type="text" className="validate" />
+              <label htmlFor="Nome">Nome</label>
+            </div>
+          </div>
+
           <div className="row">
             <div className="input-field col s12">
               <input id="email" type="email" className="validate" />
@@ -27,21 +33,23 @@ function Login() {
               <label htmlFor="password">Senha</label>
             </div>
           </div>
+          
+          <div className="row">
+            <div className="input-field col s12">
+              <input id="confirm-password" type="password" className="validate" />
+              <label htmlFor="confirm-password">Senha Novamente</label>
+            </div>
+          </div>
 
           <button
             type="submit"
             className="btn waves-effect waves-light btn-submit"
           >
-            Acessar
+            Cadastrar
           </button>
         </form>
-
-        <span className="container-link-form">
-          <a href="/registrar-conta">Registrar-se</a>
-          <a href="/redefinir-senha">Esqueceu a senha</a>
-        </span>
       </div>
     </div>
   );
 }
-export default Login;
+export default RegistrarConta;

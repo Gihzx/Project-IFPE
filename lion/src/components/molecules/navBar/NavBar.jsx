@@ -1,9 +1,7 @@
 import { useState } from "react";
 import img from "../../../assets/LeonsEletronico 1.svg";
 import "../navBar/navBar.css";
-import { FiAlignJustify } from "react-icons/fi";
-import { FiShoppingCart } from "react-icons/fi";
-import { FiUser } from "react-icons/fi";
+import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 function NavBar() {
   const [input, setInput] = useState("Hinted search text");
   return (
@@ -22,7 +20,9 @@ function NavBar() {
           />
           <div className="icones">
             {/* menino */}
-            <FiUser color="#fff" size={28} />
+            <a href="/login">
+              <FiUser color="#fff" size={28} />
+            </a>
             {/* iconeCarrinho */}
             <FiShoppingCart color="#fff" size={28} />
             {/* hamburguer */}
