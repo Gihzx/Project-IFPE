@@ -19,3 +19,7 @@
 ```bash
   npm run dev
 ```
+
+Ao executar o comando acima, você deve obter o seguinte retorno no terminal.
+
+<img src="https://github.com/Gihzx/Project-IFPE/issues/1#issue-2464808501"/>
