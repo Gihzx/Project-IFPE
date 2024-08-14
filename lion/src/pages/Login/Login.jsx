@@ -38,7 +38,7 @@ function Login() {
 
         <span className="container-link-form">
           <a href="/registrar-conta">Registrar-se</a>
-          <a href="/redefinir-senha">Esqueceu a senha</a>
+          <a href="/recuperar-senha">Esqueceu a senha</a>
         </span>
       </div>
     </div>
