@@ -1,5 +1,5 @@
 import "./RedefinirSenha.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import Logo from "../../assets/logo-sm.svg";
 
 function RedefinirSenha() {
   return (
@@ -31,7 +31,6 @@ function RedefinirSenha() {
         >
           Enviar
         </button>
-        
       </div>
     </div>
   );

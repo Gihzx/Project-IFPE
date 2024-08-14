@@ -1,5 +1,5 @@
 import { useState } from "react";
-import img from "../../../assets/LeonsEletronico 1.svg";
+import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 function NavBar() {

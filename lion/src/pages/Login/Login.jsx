@@ -1,5 +1,5 @@
 import "./login.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import Logo from "../../assets/logo-sm.svg";
 
 function Login() {
   return (

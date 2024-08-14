@@ -1,5 +1,5 @@
 import "./login.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import Logo from "../../assets/logo-sm.svg";
 
 function AlterarSenha() {
   return (
@@ -11,16 +11,14 @@ function AlterarSenha() {
 
       <div className="container-form">
         <h5>Altera Senha</h5>
-       <div className="row">
-            
-
+        <div className="row">
           <button
             type="submit"
             className="btn waves-effect waves-light btn-submit"
           >
             Enviar
           </button>
-          </div> 
+        </div>
       </div>
     </div>
   );

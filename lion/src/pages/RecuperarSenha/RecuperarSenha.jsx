@@ -1,4 +1,4 @@
-import Logo from "../../assets/LeonsEletronico.jpg";
+import Logo from "../../assets/logo-sm.svg";
 
 function RecuperarSenha() {
   return (
