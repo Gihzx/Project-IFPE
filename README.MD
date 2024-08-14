@@ -22,4 +22,4 @@
 
 Ao executar o comando acima, você deve obter o seguinte retorno no terminal.
 
-<img src="https://github.com/Gihzx/Project-IFPE/issues/1#issue-2464808501"/>
+![Imgur Image](https://github.com/Gihzx/Project-IFPE/issues/1#issue-2464808501)
