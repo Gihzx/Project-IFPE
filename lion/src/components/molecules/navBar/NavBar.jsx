@@ -1,25 +1,18 @@
-import { useState } from "react";
 import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 function NavBar() {
-  const [input, setInput] = useState("Hinted search text");
   return (
     <>
-      <div className="container">
+      <div className="container-nav">
         <div className="logo">
           <img src={img} alt="" />
           <h2>Lion Eletronics</h2>
         </div>
         <div className="menu">
-          <input
-            type="text"
-            // temos um input que pega o valor e exibi em outro local que vc escolher
-            value={input}
-            onChange={(event) => setInput(event.target.value)}
-          />
+          <input type="text" placeholder="O que vocë estã procurando ?" />
           <div className="icones">
-            {/* menino */}
+            {/* usuario */}
             <a href="/login">
               <FiUser color="#fff" size={28} />
             </a>

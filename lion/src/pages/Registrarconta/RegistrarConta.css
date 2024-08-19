@@ -42,15 +42,15 @@ html, body {
 }
 
 .container-form {
-    width: 25vw;
-    height: 60vh;
+    width: 5vw;
+    height: 15vh;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #FFFFFF;
 }
 
@@ -63,26 +63,26 @@ html, body {
 
 .input-field input[type="name"]{
 
-    width: 15vw;
+    width: 10vw;
 }
 
 .input-field input[type="email"]{
-    width: 15vw;
+    width: 10vw;
 }
 
 .input-field input[type="password"]{
-    width: 15vw;
+    width: 10vw;
 }
 
 .input-field input[type="confirm-password"]{
-    width: 15vw;
+    width: 10vw;
 }
 
 .btn-submit {
     background-color: #0D1321;
 }
 .container-link-form {
-    margin-top: 8px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
