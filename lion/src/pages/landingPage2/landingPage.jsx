@@ -6,13 +6,12 @@ import controle from '../../assets/Rectangle 51.svg'
 import relogio from '../../assets/Rectangle 52.svg'
 import imgCelular from '../../assets/Rectangle 53.svg'
 import imgElipse from '../../assets/Ellipse 1.svg'
-// import {IndividualIntervalsExample} from '../../components/molecules/carrossel/carrosel2'
-// import  {Blog} from '../../components/molecules/carrossel/carrosel2'
+import  {Blog} from '../../components/molecules/carrossel/carrosel2'
 function LandingPage() {
     return (
         <>
             <div className="navBarHome">
-                <img src={logo} alt="logo" className='logo' />
+                <img src={logo} alt="logo" className='logo1' />
                 <div className='itens1'>
                     <div>Home</div>
                     <div>Contatos</div>
@@ -24,7 +23,7 @@ function LandingPage() {
                 </div>
             </div>
             {/* <div className='laranja'></div> */}
-            {/* <Blog/> */}
+            <Blog/>
             <div className='traco'><h4>Navegador por categoria</h4></div>
             <div className="imgCategoria">
                 <div><img src={camera} alt="camera"  className='img'/></div>
@@ -36,8 +35,6 @@ function LandingPage() {
                 <img src={imgCelular} alt="" />
                 <img src={imgElipse} alt="" />
             </section>
-          
-
         </>
     )
 }

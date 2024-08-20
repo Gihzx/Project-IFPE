@@ -1,2 +1,0 @@
-import  imgFone from '../../../assets/happy-african-woman-using-smartphone-workplace.png'
-import imgTablete from '../../../assets/portrait-excited-young-woman-with-digital-tablet-sitting-couch-laughing-smiling-winning.png'
