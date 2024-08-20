@@ -4,6 +4,7 @@ import Login from "./pages/Login/Login";
 import RedefinirSenha from "./pages/RedefinirSenha/RedefinirSenha";
 import RegistrarConta from "./pages/Registrarconta/RegistrarConta";
 import RecuperarSenha from "./pages/RecuperarSenha/RecuperarSenha";
+import LandingPage from "./pages/landingPage2/landingPage"
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
         <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         <Route path="/registrar-conta" element={<RegistrarConta />} />
         <Route path="/recuperar-senha" element={<RecuperarSenha />} />
+        <Route path="/Home" element={<LandingPage />} />
       </Routes>
     </BrowserRouter>
   );
