@@ -1,0 +1,40 @@
+.navBarHome {
+  margin: 0;
+}
+.row-orage-one {
+  background-color: #ff6f59;
+  height: 23px;
+}
+.logo {
+  height: 60px;
+  width: 70px;
+  margin: 0;
+}
+.nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.names {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.btn-login {
+  padding: 2px;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 10px 3px 10px;
+  background-color: #0d1321;
+  color: aliceblue;
+  margin-bottom: 5px;
+}
+.button {
+  display: flex;
+  gap: 25px;
+}
+.btn-cadastro {
+  border: none;
+  margin-bottom: 7px;
+  background-color: #ffff;
+}
