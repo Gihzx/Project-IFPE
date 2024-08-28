@@ -1,0 +1,26 @@
+.text {
+  display: flex;
+  justify-content: space-around;
+  background-color: #0d1321;
+  padding: 40px;
+}
+
+.text div h4 {
+  color: aliceblue;
+}
+
+.text div p {
+  color: aliceblue;
+}
+.celula-ciculo {
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid 4px #ff6f59;
+  margin: 0 auto;
+}

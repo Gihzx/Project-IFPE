@@ -1,0 +1,19 @@
+.section-oferta {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.section {
+  padding-bottom: 20px;
+}
+.bntComprar1 {
+  background-color: aliceblue;
+  color: black;
+  border: none;
+  font-size: 19px;
+  font-size: 25px;
+}
+.bntComprar1:hover {
+  color: #ff6f59;
+}

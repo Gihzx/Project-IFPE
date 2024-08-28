@@ -6,7 +6,7 @@ function NavBar() {
   const [input, setInput] = useState("Hinted search text");
   return (
     <>
-      <div className="container2">
+      <div className="containerb">
         <div className="logo">
           <img src={img} alt="" />
           <h2>Lion Eletronics</h2>
