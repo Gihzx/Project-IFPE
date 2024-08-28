@@ -23,11 +23,12 @@ function Footer() {
             <p>@LionsEletricos</p>
           </div>
         </div>
-        {/* <div>
-          <img src={catao1} alt="foto" />
-          <img src={catao2} alt="foto" />
-            <img src={catao3} alt="foto" />
-        </div> */}
+        <div>
+          {/* <img src={catao1} alt="foto" /> */}
+          {/* <img src={catao2} alt="foto" />
+            <img src={catao3} alt="foto" /> */}
+        </div>
+        <div className="row"></div>
       </div>
     </>
   );

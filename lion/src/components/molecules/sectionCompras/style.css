@@ -1,0 +1,25 @@
+.cardContainer {
+  display: flex;
+  gap: 1rem;
+  background-color: #0d1321;
+  padding: 3rem;
+}
+
+.card-1 {
+  background-color: #fff;
+  width: 50%; /* Ajuste a largura aqui */
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.imgCards {
+  max-width: 35%;
+  height: auto;
+}
+.Conatiner-Section {
+  background-color: #fff;
+  margin: 9rem 0 9rem 0;
+}

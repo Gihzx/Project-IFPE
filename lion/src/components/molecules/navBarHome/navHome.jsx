@@ -1,4 +1,5 @@
 import img from "../../../assets/logo-sm.svg";
+import { Link } from "react-router-dom";
 import "./navHomeStyle.css";
 function NavHome() {
   return (
@@ -12,11 +13,22 @@ function NavHome() {
             <p>FAQ</p>
           </div>
           <div className="button">
-            <button className="btn-login">Login</button>
-            <button className="btn-cadastro">Cadastro</button>
+            <Link to="/login">
+              <button className="login">login</button>
+            </Link>
+            <div className="button">
+              <Link to="/">
+                <button className="cadastrar">Cadastrar</button>
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="row-orage-one"></div>
+        <div className="rowOrageone">
+          <p>Categorias</p>
+          <p>Ofertas</p>
+          <p>Nossos produtos</p>
+          <p>Seja parceiro</p>
+        </div>
       </div>
     </>
   );

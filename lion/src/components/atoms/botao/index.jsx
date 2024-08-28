@@ -1,18 +1,8 @@
-// import { useState } from "react"
-
-// function butao ({btnTxt}){
-//     const [typeButton, setTypeButton] = useState("")
-//     const rederButton = () =>{
-//         switch(typeButton){
-//             case: "button-primary"
-//             return <button className="">{btnTxt}</button>
-//             case: "button-secudary"
-//         }
-//     }
-//     return(
-//         <>
-
-//         </>
-//     )
-// }
-// export default butao
+import "./styles.css";
+export function Butao({ typeBtn }) {
+  return (
+    <>
+      <button className="vendas">{typeBtn}</button>
+    </>
+  );
+}

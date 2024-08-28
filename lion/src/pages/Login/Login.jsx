@@ -8,11 +8,9 @@ function Login() {
         <img src={Logo} alt="" />
         <h5>Lion Eletronics </h5>
       </div>
-
       <div className="container-form">
         <h3>Login</h3>
 
-        <div className="row"></div>
         <form>
           <div className="row">
             <div className="input-field col s12">
@@ -27,7 +25,6 @@ function Login() {
               <label htmlFor="password">Senha</label>
             </div>
           </div>
-
           <button
             type="submit"
             className="btn waves-effect waves-light btn-submit"

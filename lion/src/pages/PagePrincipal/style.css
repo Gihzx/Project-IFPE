@@ -1,7 +1,7 @@
 .section-one {
   background-color: #0d1321;
   height: 100vh;
-  color: aliceblue;
+  color: #f0f8ff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
   margin: 0;
 }
 
-.row-orage {
+.rowOorage {
   width: 90%;
   display: flex;
   align-items: center;
@@ -30,11 +30,12 @@
   border: none;
   padding: 5px;
   background-color: #0d1321;
-  border-radius: 4px;
-  border: solid 2px #ff6f59;
   margin-top: 20px;
   color: aliceblue;
-  font-size: 15px;
+  font-size: 23px;
+}
+.bntComprar:hover {
+  color: #ff6f59;
 }
 .categoria-name {
   display: flex;

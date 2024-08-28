@@ -10,13 +10,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  margin: 10px 20px;
+  margin: 5px 10px;
 }
 .logo img {
-  width: 75px;
+  width: 70px;
+  margin-left: 1rem;
 }
 .logo h2 {
   color: #fff;
+  font-size: 19px;
 }
 
 .menu {
@@ -32,7 +34,7 @@
 }
 
 .menu input {
-  padding: 10px;
+  padding: 4px;
   width: 150%;
   border: none;
   outline: none;
