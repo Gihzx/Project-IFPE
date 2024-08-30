@@ -1,0 +1,13 @@
+.cardsUser {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  background-color: aliceblue;
+}
+.imgCategory {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 15px;
+}
