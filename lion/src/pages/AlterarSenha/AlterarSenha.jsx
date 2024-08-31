@@ -1,5 +1,6 @@
-import "./login.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import "./AlterarSenha.css";
+import "../../GlobalStylesForm.css";
+import Logo from "../../assets/logo-sm.svg";
 
 function AlterarSenha() {
   return (
@@ -11,14 +12,16 @@ function AlterarSenha() {
 
       <div className="container-form">
         <h5>Altera Senha</h5>
-       <div className="row">
-            
-
+        <p>
+          Você recebeu um e-mail com um link para redefinir sua senha. Abra o
+          e-mail e siga o link para criar uma nova senha.
+        </p>
+        <div className="row">
           <button
             type="submit"
             className="btn waves-effect waves-light btn-submit"
           >
-            Enviar
+            ok
           </button>
           </div> 
       </div>

@@ -1,5 +1,6 @@
-import "./RedefinirSenha.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import "./RedefinirSenha.css";  
+import "../../GlobalStylesForm.css";
+import Logo from "../../assets/logo-sm.svg";
 
 function RedefinirSenha() {
   return (

@@ -1,5 +1,6 @@
 import "./login.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import "../../GlobalStylesForm.css";
+import Logo from "../../assets/logo-sm.svg";
 
 function Login() {
   return (
@@ -11,30 +12,21 @@ function Login() {
 
       <div className="container-form">
         <h3>Login</h3>
-
-        <div className="row"></div>
         <form>
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="email" type="email" className="validate" />
-              <label htmlFor="email">Email</label>
-            </div>
+          <div className="container-items-form">
+            <label htmlFor="email">Email: </label>
+            <input id="email" type="email" className="validate" />
           </div>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="password" type="password" className="validate" />
-              <label htmlFor="password">Senha</label>
-            </div>
+          <div className="container-items-form">
+            <label htmlFor="password">Senha: </label>
+            <input id="password" type="password" className="validate" />
           </div>
-
-          <button
-            type="submit"
-            className="btn waves-effect waves-light btn-submit"
-          >
-            Acessar
-          </button>
         </form>
+
+        <button type="submit" className="btn-submit">
+          Acessar
+        </button>
 
         <span className="container-link-form">
           <a href="/registrar-conta">Registrar-se</a>

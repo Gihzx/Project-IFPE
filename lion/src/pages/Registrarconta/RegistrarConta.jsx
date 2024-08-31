@@ -1,11 +1,12 @@
 import "./RegistrarConta.css";
-import Logo from "../../assets/LeonsEletronico.jpg";
+import "../../GlobalStylesForm.css";
+import Logo from "../../assets/logo-sm.svg";
 
 function RegistrarConta() {
   return (
     <div className="container-page">
       <div className="container-logo-form">
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="logo" />
         <h5>Lion Eletronics </h5>
       </div>
 
@@ -15,8 +16,15 @@ function RegistrarConta() {
         <form>
           <div className="row">
             <div className="input-field col s12">
-              <input id="Nome" type="text" className="validate" />
+              <input id="Nome" type="text" className="validate" /> 
               <label htmlFor="Nome">Nome</label>
+            </div>
+
+            <div className="row">
+              <div className="input-field col s12 endereco">
+                <input id="endereco" type="text" className="validate" />
+                <label htmlFor="endereco">Endereco</label>
+              </div>
             </div>
           </div>
 
