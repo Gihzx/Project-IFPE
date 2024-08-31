@@ -1,0 +1,17 @@
+.ContainerTabela {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  background-color: #0d1321;
+  color: aliceblue;
+  height: 2.5rem;
+}
+.CotainerTabela p:hover {
+  color: #ff6f59;
+}
+.item a {
+  text-decoration: none;
+  color: inherit;
+  padding: 40px;
+}

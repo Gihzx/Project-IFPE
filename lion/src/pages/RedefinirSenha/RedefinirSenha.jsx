@@ -32,7 +32,6 @@ function RedefinirSenha() {
         >
           Enviar
         </button>
-        
       </div>
     </div>
   );

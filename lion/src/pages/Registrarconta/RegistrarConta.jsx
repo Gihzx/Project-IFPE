@@ -41,10 +41,14 @@ function RegistrarConta() {
               <label htmlFor="password">Senha</label>
             </div>
           </div>
-          
+
           <div className="row">
             <div className="input-field col s12">
-              <input id="confirm-password" type="password" className="validate" />
+              <input
+                id="confirm-password"
+                type="password"
+                className="validate"
+              />
               <label htmlFor="confirm-password">Senha Novamente</label>
             </div>
           </div>

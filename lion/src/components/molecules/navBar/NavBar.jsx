@@ -1,11 +1,11 @@
 import { useState } from "react";
-import img from "../../../assets/LeonsEletronico 1.svg";
+import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 function NavBar() {
   return (
     <>
-      <div className="container">
+      <div className="containerb">
         <div className="logo">
           <img src={img} alt="" />
           <h2>Lion Eletronics</h2>

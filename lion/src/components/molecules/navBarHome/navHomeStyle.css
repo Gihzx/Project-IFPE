@@ -1,0 +1,50 @@
+.navBarHome {
+  margin: 0;
+}
+.rowOrageone {
+  background-color: #ff6f59;
+  height: 23px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 50px;
+  padding-right: 30px;
+}
+.logo {
+  height: 60px;
+  width: 70px;
+  margin: 0;
+}
+.nav {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.names {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.login {
+  border: none;
+
+  margin-bottom: 7px;
+  color: #f4f5f7;
+  border-radius: 5px;
+  padding: 3px 20px 3px 20px;
+  background-color: #0d1321;
+}
+.cadastrar {
+  border: none;
+  border: solid 2px #ff6f59;
+  margin-bottom: 7px;
+  color: #0d1321;
+  border-radius: 5px;
+  padding: 3px 20px 3px 20px;
+  background-color: #ffff;
+}

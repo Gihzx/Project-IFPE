@@ -23,7 +23,7 @@ function AlterarSenha() {
           >
             ok
           </button>
-          </div> 
+        </div>
       </div>
     </div>
   );
