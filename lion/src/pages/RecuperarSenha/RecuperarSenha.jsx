@@ -1,4 +1,5 @@
 import Logo from "../../assets/logo-sm.svg";
+import "../../GlobalStylesForm.css";
 
 function RecuperarSenha() {
   return (
@@ -10,18 +11,14 @@ function RecuperarSenha() {
 
       <div className="container-form">
         <h6>Recuperar Senha</h6>
-
-        <div className="row">
-          <div className="input-field col s12">
-            <input id="email" type="email" className="validate" />
+        <form>
+          <div className="container-items-form">
             <label htmlFor="email">Email</label>
+            <input id="email" type="email" className="validate" />
           </div>
-        </div>
+        </form>
 
-        <button
-          type="submit"
-          className="btn waves-effect waves-light btn-submit"
-        >
+        <button type="submit" className="btn-submit">
           Enviar
         </button>
       </div>

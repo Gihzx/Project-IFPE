@@ -7,7 +7,9 @@
   background-color: #0d1321;
   font-family: "montserrat";
 }
+
 .logo {
+  width: 25%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,6 +21,10 @@
   margin-left: 1rem;
 }
 .logo h2 {
+  font-size: 1.5rem;
+
+  margin-top: 20px;
+
   color: #fff;
   font-size: 19px;
 }
@@ -41,6 +47,7 @@
   border: none;
   outline: none;
   border-radius: 18px;
+  background-color: #fff;
 }
 .laranja {
   background-color: #ff6f59;

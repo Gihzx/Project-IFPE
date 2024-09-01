@@ -1,4 +1,5 @@
-import "./RedefinirSenha.css";
+import "./RedefinirSenha.css";  
+import "../../GlobalStylesForm.css";
 import Logo from "../../assets/logo-sm.svg";
 
 function RedefinirSenha() {
