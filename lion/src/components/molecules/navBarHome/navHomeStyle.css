@@ -41,10 +41,10 @@
 }
 .cadastrar {
   border: none;
-  border: solid 2px #ff6f59;
+  
   margin-bottom: 7px;
-  color: #0d1321;
+  color: #f4f5f7;
   border-radius: 5px;
   padding: 3px 20px 3px 20px;
-  background-color: #ffff;
+  background-color:  #0d1321;
 }

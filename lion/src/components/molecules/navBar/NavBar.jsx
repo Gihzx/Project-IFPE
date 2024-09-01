@@ -1,7 +1,15 @@
+import { useState } from "react";
 import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
+import Menu from "../../atoms/Menu/menu";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 function NavBar() {
+  const [openMenu, setOpenMenu] = useState(false);
+
+  function handlerOpenMenu() {
+    setOpenMenu((prevState) => !prevState);
+  }
+
   return (
     <>
       <div className="containerb">
@@ -19,7 +27,11 @@ function NavBar() {
             {/* iconeCarrinho */}
             <FiShoppingCart color="#fff" size={28} />
             {/* hamburguer */}
-            <FiAlignJustify color="#fff" size={28} />
+            <FiAlignJustify
+              color="#fff"
+              size={28}
+              onClick={handlerOpenMenu}
+            />\ {openMenu && <Menu />}
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ function NavHome() {
               <button className="login">login</button>
             </Link>
             <div className="button">
-              <Link to="/">
+              <Link to="/registrar-conta">
                 <button className="cadastrar">Cadastrar</button>
               </Link>
             </div>
