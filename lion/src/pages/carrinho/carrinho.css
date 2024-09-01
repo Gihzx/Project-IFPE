@@ -1,0 +1,30 @@
+.imgCarrionho {
+  height: 100px;
+}
+.campoCards {
+  width: 200px;
+}
+.container-img {
+  width: 34%;
+  border-radius: 7px;
+  border: solid 1px black;
+  margin: 20px;
+}
+.Pagamento {
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+  height: 70vh;
+  border-radius: 7px;
+  gap: 1rem;
+}
+.Pagamento input {
+  outline: none;
+  padding: 5px;
+}
+.Conatiner-carrinho {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+}

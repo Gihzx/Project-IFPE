@@ -1,10 +1,10 @@
 import "./style.css";
 import NavHome from "../../components/molecules/navBarHome/navHome";
-import rectagle4 from "../../assets/Rectangle 52.svg";
+import rectagle4 from "../../assets/Rectangle 226.png";
 import imgSection from "../../assets/relogio-ifpe-removebg-preview.png";
-import rectagle1 from "../../assets/Rectangle 45.svg";
-import rectagle2 from "../../assets/Rectangle 51 (1).svg";
-import rectagle3 from "../../assets/Rectangle 50.svg";
+import rectagle1 from "../../assets/imgPhone.png";
+import rectagle2 from "../../assets/Captura_de_tela_2024-08-30_005129-removebg-preview.png";
+import rectagle3 from "../../assets/Rectangle 227.png";
 import SectionHome from "../../components/molecules/sectionHome/SectionHome";
 import Footer from "../../components/molecules/footer/footer";
 import SectionCompras from "../../components/molecules/sectionCompras";
