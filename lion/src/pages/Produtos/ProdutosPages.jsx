@@ -1,11 +1,19 @@
 import NavBar from "../../components/molecules/navBar/NavBar";
-import imgCategory from "../../assets/relogio-ifpe-removebg-preview.png";
-import imgCategory2 from "../../assets/relogio-ifpe-removebg-preview.png";
+import imgCategory from "../../assets/Rectangle 226.png";
+import imgCategory2 from "../../assets/Rectangle 227.png";
 import imgCategory3 from "../../assets/Captura_de_tela_2024-08-30_005129-removebg-preview.png";
 import imgCategory4 from "../../assets/imgPhone.png";
 import "./produtoStyle.css";
+import { useEffect } from "react";
 
 function ProdutosPages() {
+  useEffect(() => {
+    const time = setTimeout(() => {
+      console.log("funcionou");
+    }, 1000);
+    return () => clearTimeout(time);
+  }, []);
+
   return (
     <>
       <NavBar />
