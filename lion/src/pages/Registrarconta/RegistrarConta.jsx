@@ -1,8 +1,21 @@
+import { useState } from "react";
 import "./RegistrarConta.css";
 import "../../GlobalStylesForm.css";
 import Logo from "../../assets/logo-sm.svg";
 
 function RegistrarConta() {
+  const [step, setStep] = useState(1);
+
+  const nextToStep = () => {
+    setStep((prevState) => prevState + 1);
+    console.log(step);
+  };
+
+  const backToStep = () => {
+    setStep((prevState) => prevState - 1);
+    console.log(step);
+  };
+
   return (
     <div className="container-page">
       <div className="container-logo-form">
@@ -14,52 +27,56 @@ function RegistrarConta() {
         <h6>Registrar Conta</h6>
 
         <form>
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="Nome" type="text" className="validate" /> 
-              <label htmlFor="Nome">Nome</label>
-            </div>
-
-            <div className="row">
-              <div className="input-field col s12 endereco">
-                <input id="endereco" type="text" className="validate" />
-                <label htmlFor="endereco">Endereco</label>
+          {step <= 1 ? (
+            <>
+              <div className="container-items-form">
+                <label htmlFor="Nome">Nome</label>
+                <input id="Nome" type="text" className="validate" />
               </div>
-            </div>
-          </div>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="email" type="email" className="validate" />
-              <label htmlFor="email">Email</label>
-            </div>
-          </div>
+              <div className="container-items-form">
+                <label htmlFor="endereco">Endereco</label>
+                <input id="endereco" type="text" className="validate" />
+              </div>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <input id="password" type="password" className="validate" />
-              <label htmlFor="password">Senha</label>
-            </div>
-          </div>
+              <div className="container-items-form">
+                <label htmlFor="email">Email</label>
+                <input id="email" type="email" className="validate" />
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="container-items-form">
+                <label htmlFor="password">Senha</label>
+                <input id="password" type="password" className="validate" />
+              </div>
 
-          <div className="row">
-            <div className="input-field col s12">
-              <input
-                id="confirm-password"
-                type="password"
-                className="validate"
-              />
-              <label htmlFor="confirm-password">Senha Novamente</label>
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="btn waves-effect waves-light btn-submit"
-          >
-            Cadastrar
-          </button>
+              <div className="container-items-form">
+                <label htmlFor="confirm-password">Senha Novamente</label>
+                <input
+                  id="confirm-password"
+                  type="password"
+                  className="validate"
+                />
+              </div>
+            </>
+          )}
         </form>
+
+        {step <= 1 ? (
+          <button type="button" className="btn-submit" onClick={nextToStep}>
+            Próximo
+          </button>
+        ) : (
+          <div className="container-buttons-form">
+            <button type="button" className="btn-submit" onClick={backToStep}>
+              Anterior
+            </button>
+            <button type="submit" className="btn-submit">
+              Registrar
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

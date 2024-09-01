@@ -112,3 +112,7 @@ html, body {
     text-decoration: underline;
 }
 
+.container-buttons-form {
+    display: flex;
+    gap: 4px;
+}
