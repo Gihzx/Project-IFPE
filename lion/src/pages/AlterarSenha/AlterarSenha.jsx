@@ -6,7 +6,7 @@ function AlterarSenha() {
   return (
     <div className="container-page">
       <div className="container-logo-form">
-        <img src={Logo} alt="" />
+        <img src={Logo} alt="Lion Eletronics logo" />
         <h5>Lion Eletronics </h5>
       </div>
 
@@ -18,7 +18,7 @@ function AlterarSenha() {
         </p>
         <div className="row">
           <button
-            type="submit"
+            type="button"
             className="btn waves-effect waves-light btn-submit"
           >
             ok
