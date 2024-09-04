@@ -46,14 +46,11 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 100px;
-  margin: 80px 0 0 80px;
+  gap: 4rem;
+  margin-top: 2rem;
 }
-.categoria-name h1 {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+.photo-h1 h2 {
+  margin-left: 4rem;
 }
 .photo {
   width: 200px;

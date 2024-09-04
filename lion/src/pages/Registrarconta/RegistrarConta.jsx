@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./RegistrarConta.css";
 import "../../GlobalStylesForm.css";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-sm.svg";
 
 function RegistrarConta() {
@@ -72,9 +73,11 @@ function RegistrarConta() {
             <button type="button" className="btn-submit" onClick={backToStep}>
               Anterior
             </button>
-            <button type="submit" className="btn-submit">
-              Registrar
-            </button>
+            <Link to="/produtoPages">
+              <button type="submit" className="btn-submit">
+                Registrar
+              </button>
+            </Link>
           </div>
         )}
       </div>

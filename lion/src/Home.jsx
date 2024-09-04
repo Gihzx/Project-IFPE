@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import NavBar from "./components/molecules/navBar/NavBar";
 import Card from "./components/atoms/Card";
 
 function Home() {
@@ -29,10 +28,9 @@ function Home() {
 
   return (
     <>
-      <NavBar />
       <div className="container-card-produtos">
         {produtos.map((produto) => (
-          <Card nome={produto.nome} preco={produto.preco} key={produto.id}/> 
+          <Card nome={produto.nome} preco={produto.preco} key={produto.id} />
         ))}
       </div>
     </>

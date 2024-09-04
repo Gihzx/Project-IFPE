@@ -1,30 +1,60 @@
+.Conatiner-carrinho {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
 .imgCarrionho {
-  height: 100px;
+  height: 126px;
 }
 .campoCards {
   width: 200px;
 }
 .container-img {
-  width: 34%;
-  border-radius: 7px;
-  border: solid 1px black;
-  margin: 20px;
+  display: flex;
+  border-bottom: solid 1px #a5a0a0;
+  margin: 2rem;
 }
-.Pagamento {
-  background-color: aliceblue;
+
+.h1Cards {
+  border: solid 1px #a5a0a0;
+  border-radius: 5px;
+  width: 40%;
+  margin-top: 3rem;
+}
+.h1Cards h5 {
+  margin-top: 1rem;
+}
+.inforCards {
   display: flex;
   flex-direction: column;
-  width: 23%;
-  height: 70vh;
+  justify-content: center;
+}
+.valor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+.valor .preco {
+  margin-left: 4rem;
+}
+
+.produto {
+  display: flex;
+  flex-direction: column;
+}
+.Pagamento {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  padding: 1rem;
+  border: solid 1px #a5a0a0;
   border-radius: 7px;
   gap: 1rem;
+  margin-top: 3rem;
+  margin-left: 1.5rem;
 }
 .Pagamento input {
   outline: none;
   padding: 5px;
-}
-.Conatiner-carrinho {
-  display: flex;
-  text-align: center;
-  justify-content: space-around;
 }
