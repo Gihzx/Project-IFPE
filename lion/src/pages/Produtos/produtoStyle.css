@@ -1,8 +1,14 @@
+.conatiner {
+  background-color: aliceblue;
+  margin-top: 3%;
+}
 .cardsUser {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
-  background-color: aliceblue;
+}
+.section {
+  margin-top: 3%;
 }
 .imgCategory {
   display: flex;
@@ -10,4 +16,5 @@
   flex-direction: column;
   margin-top: 10px;
   gap: 15px;
+  width: 80%;
 }
