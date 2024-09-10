@@ -1,4 +1,4 @@
-const db = require('./config');
+import db from './config.js';
 
 let operations = {
     list: function() {
@@ -69,4 +69,4 @@ let operations = {
     }
 }
 
-module.exports = operations;
+export default operations;

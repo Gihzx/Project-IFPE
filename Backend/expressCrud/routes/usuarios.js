@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import dao from '../database/dao.usuarios.js';
+
 const router = express.Router();
-const dao = require('../database/dao.usuarios');
 
 router.get('/', function (req, res) {
     dao.list()
@@ -43,7 +44,6 @@ router.post('/', function (req, res) {
         });
 });
 
-
 router.put('/:idUsuarios', function(req, res) {
     const idUsuarios = req.params.idUsuarios;
     const { nomeCliente, cpf, emailCliente, senha, tipo } = req.body;
@@ -58,7 +58,6 @@ router.put('/:idUsuarios', function(req, res) {
         });
 });
 
-
 router.delete('/:idUsuarios', function (req, res) {
     const idUsuarios = req.params.idUsuarios;
     dao.remove(idUsuarios)
@@ -71,4 +70,4 @@ router.delete('/:idUsuarios', function (req, res) {
         });
 });
 
-module.exports = router;
+export default router;

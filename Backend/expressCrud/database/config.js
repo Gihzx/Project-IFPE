@@ -1,6 +1,6 @@
-const mysql = require('mysql2');
+import mysql from 'mysql2';
 
-//Conexão inical com o banco de dados e a criação do database
+//Conexão inicial com o banco de dados e a criação do database
 
 const db = mysql.createConnection({
     host: 'localhost',
@@ -36,5 +36,4 @@ db.connect(err => {
 
 // Conectar ao banco de dados 'ecommerce'
 
-
-module.exports = db
+export default db;
