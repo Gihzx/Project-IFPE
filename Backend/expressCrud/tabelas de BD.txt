@@ -5,26 +5,4 @@ CREATE TABLE usuarios (idUsuario INTEGER PRIMARY KEY AUTO_INCREMENT, nomeCliente
 
 CREATE TABLE pedidos ( idPedido INTEGER AUTO_INCREMENT PRIMARY KEY, dataEmissao DATE not null, statusPedido VARCHAR(50) not null, idUsuario INT not null, idProduto INT not null);
 
-CREATE TABLE produtos (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,  nomeProduto VARCHAR(100) NOT NULL, modelo VARCHAR(100) NOT NULL, marca VARCHAR(30) NOT NULL, preco DECIMAL(6,2) NOT NULL, descricao VARCHAR(500) NOT NULL, quantidade INTEGER, status_disponibilidade VARCHAR(30), categoria VARCHAR(50), fichaTecnica TEXT);
-
-
-    cor VARCHAR(30) NOT NULL,
-    dimensoes VARCHAR(100),
-    peso VARCHAR(30),
-    capacidade VARCHAR(30),
-    processador VARCHAR(100),
-    tela VARCHAR(100),
-    sistema_operacional VARCHAR(100),
-    conectividade VARCHAR(100),
-    portas_entradas VARCHAR(100),
-    bateria VARCHAR(100),
-    voltagem VARCHAR(100),
-    data_lancamento DATE,
-
- {
-    "cpf": "333",
-    "tipo": 1,
-    "nomeCliente": "Ricardo Costa",
-    "emailCliente": "ricardo@teste.com",
-    "senha": "123"
-  }
+CREATE TABLE produtos (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,  nomeProduto VARCHAR(100) NOT NULL, modelo VARCHAR(100) NOT NULL, marca VARCHAR(30) NOT NULL, preco DECIMAL(6,2) NOT NULL, descricao TEXT NOT NULL, quantidade INTEGER, status_disponibilidade VARCHAR(30) NOT NULL, categoria VARCHAR(50) NOT NULL, url TEXT);

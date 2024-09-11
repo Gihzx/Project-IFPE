@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const dao = require('../database/dao.pedidos');
+import dao from '../database/dao.pedidos.js';
 
 router.get('/', function (req, res) {
     console.log("Requisição GET para listar todos os pedidos recebida.");
@@ -88,4 +88,4 @@ router.delete('/:idPedido', function(req, res) {
         });
 });
 
-module.exports = router;
+export default router;
