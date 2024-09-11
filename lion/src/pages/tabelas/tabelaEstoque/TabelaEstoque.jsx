@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
 import NavBar from "../../../components/molecules/navBar/NavBar";
+import { useState, useEffect } from "react";
+import api from "../../../api";
 function TabelaEstoque() {
+  const [protdutos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    handleGet();
+  }, []);
+  const handleGet = async () => {
+    try {
+      const response = await api.get("/produtos");
+      setProdutos(response.data);
+    } catch (error) {
+      console.log(`erro ao buscar produtos ${error}`);
+    }
+  };
   return (
     <>
       <NavBar />
@@ -26,31 +41,24 @@ function TabelaEstoque() {
         <thead>
           <tr>
             <th>Código</th>
-            <th>Produto</th>
-            <th>Estoque minimo</th>
+            <th>Nome produto</th>
+            <th>Marca</th>
+            <th>Categoria</th>
             <th>Estoque atual</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Nome do produto</td>
-            <td>Categoria</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Marca do produto</td>
-            <td>Categoria</td>
-            <td>2</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Marca do produto</td>
-            <td>Categoria</td>
-            <td>3</td>
-          </tr>
+          {protdutos.map((produto, index) => (
+            <tr key={index}>
+              <th>{produto.idProduto}</th>
+              <td>{produto.nomeProduto}</td>
+              <td>{produto.marca}</td>
+              <td>{produto.categoria}</td>
+              <th>{produto.quantidade}</th>
+              <td>{produto.status_disponibilidade}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
 

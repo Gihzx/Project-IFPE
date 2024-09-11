@@ -25,7 +25,8 @@ function NavBar() {
               <FiUser color="#fff" size={28} />
             </a>
             {/* iconeCarrinho */}
-            <FiShoppingCart color="#fff" size={28} />
+            <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+            <span className="status">1</span>
             {/* hamburguer */}
             <FiAlignJustify
               color="#fff"

@@ -1,6 +1,22 @@
 import "./descricao.css";
 import NavBar from "../../components/molecules/navBar/NavBar";
+
+import { useEffect, useState } from "react";
+import api from "../../api";
 function DescricaoProduto() {
+  const [produtos, setProdutos] = useState([]);
+  useEffect(() => {
+    fetchProdutos();
+  }, []);
+  const fetchProdutos = async () => {
+    try {
+      const response = await api.get("/produtos");
+      console.log(response.data);
+      setProdutos(response.data);
+    } catch (error) {
+      console.log(`erro ao buscar dados ${error}`);
+    }
+  };
   return (
     <>
       <NavBar />
@@ -13,20 +29,21 @@ function DescricaoProduto() {
             />
           </div>
           <div className="infos">
-            <h3>IPhone</h3>
-            <h4> 13(128 GB) Estelar </h4>
-            <h4>Marca: Apple</h4>
-            <h4>R$ 3.869</h4>
-            <h6>Descrição:</h6>
-            <p>
-              iPhone 13, tem sua câmeras trazera dupla de 12 MP com modo
-              retrato, controle de profundidade, iluminação de retrato, HDR
-              inteligente e vídeo Dolby Vision HDR 4K de até 30 fps e a câmera
-              frontal TrueDepth de 12 MP com modo Retrato, Controle de
-              Profundidade, Iluminação Retrato e Smart HDR 3. Sua tela fica em
-              modo cinema, diminui a profundidade de campo e muda o foco nos
-              seus vídeos automaticamente.
-            </p>
+            {produtos.length > 0 ? (
+              produtos.map((produto, index) => (
+                <div key={index}>
+                  <p>{produto.idProduto}</p>
+                  <h3>{produto.nomeProduto}</h3>
+                  <h4>13(128 GB) Estelar</h4>
+                  <h4>{produto.marca}</h4>
+                  <h4>{produto.preco}</h4>
+                  <h6>Descrição:</h6>
+                  <p>{produto.descricao}</p>
+                </div>
+              ))
+            ) : (
+              <p>Nenhum produto encontrado.</p>
+            )}
             <p className="button-descricao">Adicionar ao carrinho</p>
           </div>
         </div>

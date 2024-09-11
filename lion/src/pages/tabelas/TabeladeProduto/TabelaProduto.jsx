@@ -151,8 +151,8 @@ function TabelaProduto() {
                   value={status_disponibilidade}
                   onChange={(e) => setStatus_disponibilidade(e.target.value)}
                 >
-                  <option value="1">Disponivel</option>
-                  <option value="2">Indisponivel</option>
+                  <option value="Disponivel">Disponivel</option>
+                  <option value="Indisponivel">Indisponivel</option>
                 </select>
               </label>
               <label htmlFor="">Categoria</label>
@@ -161,11 +161,11 @@ function TabelaProduto() {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option value="1">Celular</option>
-                <option value="2">Computador</option>
-                <option value="3">Fones</option>
-                <option value="4">Televisão</option>
-                <option value="5">Notbook</option>
+                <option value="Celular">Celular</option>
+                <option value="Computador">Computador</option>
+                <option value="Fones">Fones</option>
+                <option value="Televisão">Televisão</option>
+                <option value="Notbook">Notbook</option>
               </select>
               <input
                 type="text"
@@ -190,6 +190,7 @@ function TabelaProduto() {
             <th>FichaTecnica</th>
             <th>Categoria</th>
             <th>Status</th>
+            <th>Preco</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -203,6 +204,7 @@ function TabelaProduto() {
               <td>{produto.fichaTecnica}</td>
               <td>{produto.categoria}</td>
               <td>{produto.status_disponibilidade}</td>
+              <td>{produto.preco}</td>
 
               <td className="icones-react">
                 <TiPencil />
