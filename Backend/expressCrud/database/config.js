@@ -1,21 +1,21 @@
-const mysql = require('mysql2');
+const mysql = require("mysql2");
 
 //Conexão inical com o banco de dados e a criação do database
 
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'lionEletronics',
-    port: 3311
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "lionEletronics",
+  port: 3306,
 });
 
-db.connect(err => {
-    if (err) {
-        console.error('Erro na conexão com o banco de dados:', err.message);
-        return;
-    }
-    console.log('Conectado ao banco de dados MySQL');
+db.connect((err) => {
+  if (err) {
+    console.error("Erro na conexão com o banco de dados:", err.message);
+    return;
+  }
+  console.log("Conectado ao banco de dados MySQL");
 });
 
 // connetion.query('CREATE DATABASE IF NOT EXISTS lionEletronics', (err) => {
@@ -36,5 +36,4 @@ db.connect(err => {
 
 // Conectar ao banco de dados 'ecommerce'
 
-
-module.exports = db
+module.exports = db;

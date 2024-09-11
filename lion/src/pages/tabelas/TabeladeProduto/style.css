@@ -24,3 +24,29 @@ tr:nth-child(even) {
   border-left: none;
   padding: 1rem;
 }
+.forms-produtos {
+  display: flex;
+  gap: 20px;
+  width: 300px;
+  padding: 20px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}
+.item input {
+  padding: 5px;
+  width: 40rem;
+  outline: none;
+}
+.button-Adicionar {
+  background-color: #62c370;
+  width: 100px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

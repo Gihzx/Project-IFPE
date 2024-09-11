@@ -5,7 +5,7 @@ const rotaPedidos = require("./routes/pedidos.js");
 const db = require("./database/config.js");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = 3000;
+const PORT = 3003;
 const cors = require("cors");
 
 app.use(cors());

@@ -1,0 +1,19 @@
+.ContainerProduto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.infos {
+  width: 400px;
+}
+.button-descricao {
+  background-color: #62c370;
+  width: 170px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button-descricao:hover {
+  background-color: hsl(129, 35%, 47%);
+}
