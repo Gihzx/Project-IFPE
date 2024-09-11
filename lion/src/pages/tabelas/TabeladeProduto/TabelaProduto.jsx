@@ -6,6 +6,7 @@ import { FcCheckmark } from "react-icons/fc";
 import api from "../../../api";
 import "./style.css";
 import { useEffect, useState } from "react";
+
 function TabelaProduto() {
   const [nomeProduto, setNomeProduto] = useState("");
   const [modelo, setModelo] = useState("");
@@ -13,8 +14,8 @@ function TabelaProduto() {
   const [preco, setPreco] = useState("");
   const [descricao, setDescricao] = useState("");
   const [quantidade, setQuantidade] = useState("");
-  const [fichaTecnica, setfichaTecnica] = useState("");
-  const [status_disponibilidade, setStatus_disponibilidade] = useState("");
+  const [url, setUrl] = useState("");
+  const [statusDisponibilidade, setStatusDisponibilidade] = useState("");
   const [categoria, setCategoria] = useState("");
   const [produtos, setProdutos] = useState([]);
 
@@ -27,16 +28,22 @@ function TabelaProduto() {
       const response = await api.get("/produtos");
       setProdutos(response.data);
     } catch (error) {
-      console.log(`error ao bucar dados ${error}`);
+      console.error("Erro ao buscar dados:", error);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Verifica se o preço é um número válido
-    if (isNaN(preco) || preco.trim() === "") {
-      alert("Por favor, insira um preço válido");
+    if (
+      !nomeProduto ||
+      !modelo ||
+      !marca ||
+      isNaN(preco) ||
+      preco.trim() === "" ||
+      isNaN(quantidade)
+    ) {
+      alert("Todos os campos obrigatórios devem ser preenchidos corretamente.");
       return;
     }
 
@@ -46,31 +53,26 @@ function TabelaProduto() {
       marca,
       preco: parseFloat(preco),
       descricao,
-      quantidade,
-      status_disponibilidade,
+      quantidade: parseInt(quantidade, 10),
+      status_disponibilidade: statusDisponibilidade,
       categoria,
-      fichaTecnica,
+      url,
     };
 
     try {
-      // Enviando o objeto "novoProduto" para o backend
       await api.post("/produtos", novoProduto);
-
-      // Adiciona o novo produto ao estado local
       setProdutos((prevProdutos) => [...prevProdutos, novoProduto]);
-      console.log(novoProduto);
-      // Limpa os campos do formulário após o envio
       setNomeProduto("");
       setModelo("");
       setMarca("");
       setPreco("");
       setDescricao("");
       setQuantidade("");
-      setStatus_disponibilidade("");
+      setStatusDisponibilidade("");
       setCategoria("");
-      setfichaTecnica("");
+      setUrl("");
     } catch (error) {
-      console.log(`Erro ao adicionar produto: ${error}`);
+      console.error("Erro ao adicionar produto:", error);
     }
   };
 
@@ -79,9 +81,10 @@ function TabelaProduto() {
       await api.delete(`/produtos/${idProduto}`);
       fetchProdutos();
     } catch (error) {
-      console.log(`Erro ao excluir dados: ${error}`);
+      console.error("Erro ao excluir dados:", error);
     }
   };
+
   return (
     <>
       <NavBar />
@@ -92,7 +95,6 @@ function TabelaProduto() {
             <span>Relatorio</span>
           </Link>
         </div>
-
         <div className="item">
           <Link to="/estoque">
             <span>Estoque</span>
@@ -104,6 +106,7 @@ function TabelaProduto() {
           </Link>
         </div>
       </div>
+
       <section>
         <form onSubmit={handleSubmit}>
           <div className="forms-produtos">
@@ -116,7 +119,7 @@ function TabelaProduto() {
               />
               <input
                 type="text"
-                placeholder="modelo"
+                placeholder="Modelo"
                 value={modelo}
                 onChange={(e) => setModelo(e.target.value)}
               />
@@ -144,20 +147,14 @@ function TabelaProduto() {
                 value={quantidade}
                 onChange={(e) => setQuantidade(e.target.value)}
               />
-              <label htmlFor="">
-                <select
-                  name=""
-                  id=""
-                  value={status_disponibilidade}
-                  onChange={(e) => setStatus_disponibilidade(e.target.value)}
-                >
-                  <option value="Disponivel">Disponivel</option>
-                  <option value="Indisponivel">Indisponivel</option>
-                </select>
-              </label>
-              <label htmlFor="">Categoria</label>
               <select
-                id="categoria"
+                value={statusDisponibilidade}
+                onChange={(e) => setStatusDisponibilidade(e.target.value)}
+              >
+                <option value="Disponivel">Disponível</option>
+                <option value="Indisponivel">Indisponível</option>
+              </select>
+              <select
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
@@ -165,12 +162,13 @@ function TabelaProduto() {
                 <option value="Computador">Computador</option>
                 <option value="Fones">Fones</option>
                 <option value="Televisão">Televisão</option>
-                <option value="Notbook">Notbook</option>
+                <option value="Notebook">Notebook</option>
               </select>
               <input
                 type="text"
-                placeholder="Ficha tecnica"
-                onChange={(e) => setfichaTecnica(e.target.value)}
+                placeholder="Ficha Técnica"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
               />
             </div>
           </div>
@@ -183,20 +181,20 @@ function TabelaProduto() {
       <table>
         <thead>
           <tr>
-            <th>Nome do produto</th>
+            <th>Nome do Produto</th>
             <th>Marca</th>
             <th>Modelo</th>
-            <th>Qnt</th>
-            <th>FichaTecnica</th>
+            <th>Quantidade</th>
+            <th>Ficha Técnica</th>
             <th>Categoria</th>
             <th>Status</th>
-            <th>Preco</th>
+            <th>Preço</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
-          {produtos.map((produto, index) => (
-            <tr key={index}>
+          {produtos.map((produto) => (
+            <tr key={produto.idProduto}>
               <td>{produto.nomeProduto}</td>
               <td>{produto.marca}</td>
               <td>{produto.modelo}</td>
@@ -205,7 +203,6 @@ function TabelaProduto() {
               <td>{produto.categoria}</td>
               <td>{produto.status_disponibilidade}</td>
               <td>{produto.preco}</td>
-
               <td className="icones-react">
                 <TiPencil />
                 <RiDeleteBin6Line
@@ -220,4 +217,5 @@ function TabelaProduto() {
     </>
   );
 }
+
 export default TabelaProduto;
