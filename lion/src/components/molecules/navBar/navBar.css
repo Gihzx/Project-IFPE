@@ -1,9 +1,14 @@
 .containerb {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #0d1321;
   font-family: "montserrat";
+  z-index: 100; /* Para garantir que fique sobre outros elementos */
 }
 
 .logo {
@@ -13,15 +18,15 @@
   gap: 30px;
   margin: 5px 10px;
 }
+
 .logo img {
   width: 70px;
   margin-left: 1rem;
 }
+
 .logo h2 {
   font-size: 1.5rem;
-
   margin-top: 20px;
-
   color: #fff;
   font-size: 19px;
 }
@@ -33,6 +38,7 @@
   flex: 0.5;
   margin: 0 30px 0 0;
 }
+
 .icones {
   display: flex;
   gap: 30px;
@@ -40,20 +46,27 @@
 
 .menu input {
   padding: 4px;
-  width: 150%;
+  width: 100%; /* Ajuste para que o input não fique exageradamente largo */
   border: none;
   outline: none;
   border-radius: 18px;
   background-color: #fff;
 }
+
 .laranja {
-  background-color: #ff6f59;
-  width: 100vw;
+  position: fixed;
+  top: 50px; /* Ajuste conforme a posição desejada em relação ao .containerb */
+  left: 0;
+  width: 100%;
   height: 3vh;
+  background-color: #ff6f59;
+  z-index: 99; /* Para que a .laranja fique abaixo da navbar */
 }
+
 .cartCarrinho {
   position: relative;
 }
+
 .status {
   position: absolute;
   top: 16px;

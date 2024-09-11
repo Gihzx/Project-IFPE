@@ -5,12 +5,15 @@ function Card(prop) {
   const handleBuyClick = () => {
     navigate("/descricao"); // Navega para a rota "/descricao"
   };
+
   return (
     <div className="card-produtos">
-      <div className="header-card">IMAGEN</div>
+      <div className="header-card">
+        <img src={prop.url} alt="img" className="img" />
+      </div>
       <div className="body-card">
-        <span>{prop.nome}</span>
-        <span>{prop.preco}</span>
+        <p>{prop.nome} </p>
+        <p>{prop.preco}</p>
       </div>
       <div className="footer-card">
         <button className="btn-buy" onClick={handleBuyClick}>

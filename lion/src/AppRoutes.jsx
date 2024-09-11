@@ -8,11 +8,11 @@ import PagePrincipal from "./pages/PagePrincipal/pagePrincipal";
 import PageTabela from "./components/molecules/pageTabela/PageTabela";
 import TabelaEstoque from "./pages/tabelas/tabelaEstoque/TabelaEstoque";
 import TabelaRelatorio from "./pages/tabelas/tabelaRelatorio/tabelaRelatorio";
-import TabelaProduto from "./pages/tabelas/TabeladeProduto/tabelaProduto";
 import Carrinho from "./pages/carrinho/Carrinho";
 import ProdutosPages from "./pages/Produtos/ProdutosPages";
 import Carrosel from "./components/molecules/carrossel/Carrosel";
 import DescricaoProduto from "./pages/decricaoProduto/DescricaoProduto";
+import TabelaProduto from "./pages/tabelas/TabeladeProduto/TabelaProduto";
 
 function AppRoutes() {
   return (

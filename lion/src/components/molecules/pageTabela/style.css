@@ -5,7 +5,8 @@
   gap: 1rem;
   background-color: #0d1321;
   color: aliceblue;
-  height: 2.5rem;
+  height: 3rem;
+  margin-top: 4rem;
 }
 .CotainerTabela p:hover {
   color: #ff6f59;

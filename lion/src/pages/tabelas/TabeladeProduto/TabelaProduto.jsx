@@ -15,8 +15,9 @@ function TabelaProduto() {
   const [descricao, setDescricao] = useState("");
   const [quantidade, setQuantidade] = useState("");
   const [url, setUrl] = useState("");
-  const [statusDisponibilidade, setStatusDisponibilidade] = useState("");
-  const [categoria, setCategoria] = useState("");
+  const [status_disponibilidade, setStatus_disponibilidade] =
+    useState("indefinido");
+  const [categoria, setCategoria] = useState("indefinido");
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
@@ -41,7 +42,8 @@ function TabelaProduto() {
       !marca ||
       isNaN(preco) ||
       preco.trim() === "" ||
-      isNaN(quantidade)
+      isNaN(quantidade) ||
+      !url
     ) {
       alert("Todos os campos obrigatórios devem ser preenchidos corretamente.");
       return;
@@ -53,8 +55,8 @@ function TabelaProduto() {
       marca,
       preco: parseFloat(preco),
       descricao,
-      quantidade: parseInt(quantidade, 10),
-      status_disponibilidade: statusDisponibilidade,
+      quantidade,
+      status_disponibilidade,
       categoria,
       url,
     };
@@ -68,7 +70,7 @@ function TabelaProduto() {
       setPreco("");
       setDescricao("");
       setQuantidade("");
-      setStatusDisponibilidade("");
+      setStatus_disponibilidade("");
       setCategoria("");
       setUrl("");
     } catch (error) {
@@ -148,8 +150,8 @@ function TabelaProduto() {
                 onChange={(e) => setQuantidade(e.target.value)}
               />
               <select
-                value={statusDisponibilidade}
-                onChange={(e) => setStatusDisponibilidade(e.target.value)}
+                value={status_disponibilidade}
+                onChange={(e) => setStatus_disponibilidade(e.target.value)}
               >
                 <option value="Disponivel">Disponível</option>
                 <option value="Indisponivel">Indisponível</option>
@@ -185,7 +187,7 @@ function TabelaProduto() {
             <th>Marca</th>
             <th>Modelo</th>
             <th>Quantidade</th>
-            <th>Ficha Técnica</th>
+            <th>url</th>
             <th>Categoria</th>
             <th>Status</th>
             <th>Preço</th>
@@ -199,7 +201,7 @@ function TabelaProduto() {
               <td>{produto.marca}</td>
               <td>{produto.modelo}</td>
               <td>{produto.quantidade}</td>
-              <td>{produto.fichaTecnica}</td>
+              <td>{produto.url}</td>
               <td>{produto.categoria}</td>
               <td>{produto.status_disponibilidade}</td>
               <td>{produto.preco}</td>
