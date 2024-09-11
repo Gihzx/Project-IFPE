@@ -12,6 +12,7 @@ import TabelaProduto from "./pages/tabelas/TabeladeProduto/tabelaProduto";
 import Carrinho from "./pages/carrinho/Carrinho";
 import ProdutosPages from "./pages/Produtos/ProdutosPages";
 import Carrosel from "./components/molecules/carrossel/Carrosel";
+import DescricaoProduto from "./pages/decricaoProduto/DescricaoProduto";
 
 function AppRoutes() {
   return (
@@ -30,6 +31,7 @@ function AppRoutes() {
         <Route path="/produtoPages" element={<ProdutosPages />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/carrossel" element={<Carrosel />} />
+        <Route path="/descricao" element={<DescricaoProduto />} />
       </Routes>
     </BrowserRouter>
   );

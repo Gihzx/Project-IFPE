@@ -37,7 +37,6 @@ function TabelaRelatorio() {
           <tr>
             <td>Nome do produto</td>
             <td>Marca do produto</td>
-
             <td>Categoria</td>
             <td>1</td>
           </tr>
@@ -55,7 +54,6 @@ function TabelaRelatorio() {
           </tr>
         </tbody>
       </table>
-      <h5>Relatorio</h5>
     </>
   );
 }
