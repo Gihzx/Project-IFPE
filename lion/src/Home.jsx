@@ -18,23 +18,26 @@ function Home({ searchTerm = "", category = "" }) {
     }
   };
 
-  // Filtro para os produtos com base na categoria e no termo de busca
+  // Filtro por termo de busca (input do NavBar)
   const filteredProducts = produtos.filter((produto) => {
-    const nomeProduto = produto.nomeProduto || ""; // Garante que o valor seja uma string
-    const categoriaProduto = produto.categoria || ""; // Garante que a categoria também seja uma string
-
-    const matchesCategory = category ? categoriaProduto.toLowerCase() === category.toLowerCase() : true;
-    const matchesSearchTerm = nomeProduto.toLowerCase().includes(searchTerm.toLowerCase());
-
-    // Retorna verdadeiro apenas se o produto corresponder ao termo de pesquisa e à categoria
-    return matchesCategory && matchesSearchTerm;
+    const nomeProduto = produto.nomeProduto || ""; 
+    return nomeProduto.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
+  // Filtro por categoria (caso não tenha searchTerm)
+  const filteredCategories = produtos.filter((produto) => {
+    const categoriaProduto = produto.categoria || ""; 
+    return category ? categoriaProduto.toLowerCase() === category.toLowerCase() : true;
+  });
+
+  // Exibe os produtos filtrados por busca se houver um termo no searchTerm, caso contrário exibe por categoria
+  const produtosParaMostrar = searchTerm ? filteredProducts : filteredCategories;
 
   return (
     <>
       <div className="container-card-produtos">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((produto) => (
+        {produtosParaMostrar.length > 0 ? (
+          produtosParaMostrar.map((produto) => (
             <Card
               key={produto.idProduto}
               url={produto.url}
