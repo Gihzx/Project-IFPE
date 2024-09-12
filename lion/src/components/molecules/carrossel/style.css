@@ -1,4 +1,4 @@
-.container {
+/* .container {
   max-width: 95vw;
   padding: 0 2rem;
   margin-top: 5rem;
@@ -28,4 +28,32 @@
   width: 40px;
   height: 40px;
   cursor: pointer;
+}
+ */
+
+  .container {
+  margin-top: 70px; /* Adiciona espaço entre o carrossel e a NavBar */
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.carrosel {
+  display: flex;
+  flex-direction: row; /* Garante que os itens fiquem em linha */
+  overflow: hidden; /* Oculta a barra de rolagem */
+  scroll-behavior: smooth; /* Rolagem suave */
+  width: 100%;
+
+}
+
+.item {
+  min-width: 200px;
+  margin-right: 10px;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
 }

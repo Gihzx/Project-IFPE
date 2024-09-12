@@ -1,3 +1,34 @@
-.imgVendas {
-  width: 200px;
+/* Estilo dos cards */
+.card {
+  max-width: 220px; /* Limita a largura máxima para manter o formato compacto */
+  margin: 10px; /* Espaçamento entre os cards */
+  border: 1px solid #e0e0e0; /* Borda leve */
+  border-radius: 8px; /* Bordas arredondadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  overflow: hidden; /* Evita que o conteúdo vaze */
+  text-align: center; /* Centraliza o conteúdo no card */
+}
+
+
+/* Estilo para as imagens dos cards */
+.card-img {
+  width: 100%;
+  height: 120px; /* Altura menor para a imagem */
+  object-fit: contain; /* Ajusta a imagem sem cortar, mantendo a proporção */
+  padding: 10px; /* Adiciona um espaço interno para deixar as imagens mais centradas */
+}
+
+/* Ajustes para o conteúdo */
+.card-body {
+  padding: 10px; /* Reduz o espaçamento interno do card */
+}
+
+.card-title {
+  font-size: 14px; /* Tamanho menor para o título */
+  font-weight: bold; /* Destaque no título */
+}
+
+.card-text {
+  font-size: 12px; /* Tamanho menor para o texto */
+  color: #666; /* Cor mais suave para o texto */
 }

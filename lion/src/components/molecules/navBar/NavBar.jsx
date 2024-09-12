@@ -3,12 +3,18 @@ import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
 import Menu from "../../atoms/Menu/menu";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
-function NavBar() {
+
+function NavBar({ setSearchTerm }) {
   const [openMenu, setOpenMenu] = useState(false);
 
-  function handlerOpenMenu() {
+  function handleOpenMenu() {
     setOpenMenu((prevState) => !prevState);
   }
+
+  // Função para lidar com a entrada no campo de busca
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value); // Atualiza o termo de busca no estado do componente pai
+  };
 
   return (
     <>
@@ -18,21 +24,19 @@ function NavBar() {
           <h2>Lion Eletronics</h2>
         </div>
         <div className="menu">
-          <input type="text" placeholder="O que você está buscando?" />
+          <input
+            type="text"
+            placeholder="O que você está buscando?"
+            onChange={handleInputChange}
+          />
           <div className="icones">
-            {/* usuario */}
             <a href="/login">
               <FiUser color="#fff" size={28} />
             </a>
-            {/* iconeCarrinho */}
             <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
             <span className="status">1</span>
-            {/* hamburguer */}
-            <FiAlignJustify
-              color="#fff"
-              size={28}
-              onClick={handlerOpenMenu}
-            />\ {openMenu && <Menu />}
+            <FiAlignJustify color="#fff" size={28} onClick={handleOpenMenu} />
+            {openMenu && <Menu />}
           </div>
         </div>
       </div>
@@ -40,4 +44,5 @@ function NavBar() {
     </>
   );
 }
+
 export default NavBar;
