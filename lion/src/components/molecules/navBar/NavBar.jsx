@@ -3,6 +3,7 @@ import img from "../../../assets/logo-sm.svg";
 import "../navBar/navBar.css";
 import api from "../../../api";
 import Menu from "../../atoms/Menu/menu";
+import { Link } from "react-router-dom";
 import { IoSearch } from "react-icons/io5";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 
@@ -57,7 +58,9 @@ function NavBar() {
             <a href="/login">
               <FiUser color="#fff" size={28} />
             </a>
-            <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+            <Link to="/carrinho">
+              <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+            </Link>
             <span className="status">1</span>
             <FiAlignJustify color="#fff" size={28} onClick={handlerOpenMenu} />
             {openMenu && <Menu />}

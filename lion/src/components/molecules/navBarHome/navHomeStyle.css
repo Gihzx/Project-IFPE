@@ -3,7 +3,7 @@
 }
 .rowOrageone {
   background-color: #ff6f59;
-  height: 23px;
+  height: 7px;
   display: flex;
   justify-content: flex-end;
   gap: 50px;
@@ -41,10 +41,10 @@
 }
 .cadastrar {
   border: none;
-  
+
   margin-bottom: 7px;
   color: #f4f5f7;
   border-radius: 5px;
   padding: 3px 20px 3px 20px;
-  background-color:  #0d1321;
+  background-color: #0d1321;
 }

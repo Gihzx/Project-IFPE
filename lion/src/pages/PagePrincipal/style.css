@@ -46,7 +46,6 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 4rem;
   margin-top: 2rem;
   cursor: pointer;
 }

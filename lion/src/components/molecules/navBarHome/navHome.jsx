@@ -23,12 +23,7 @@ function NavHome() {
             </div>
           </div>
         </div>
-        <div className="rowOrageone">
-          <p>Categorias</p>
-          <p>Ofertas</p>
-          <p>Nossos produtos</p>
-          <p>Seja parceiro</p>
-        </div>
+        <div className="rowOrageone"></div>
       </div>
     </>
   );
