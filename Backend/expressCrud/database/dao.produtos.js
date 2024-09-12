@@ -18,8 +18,19 @@ let operations = {
 
         return db.promise().execute(
             'INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-            [nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url]
-        );
+            [nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url]);
+    },
+
+    buscarPorCategoria: function(categoria) {
+        return db.promise().query('SELECT * FROM produtos WHERE categoria = ?', [categoria])
+            .then(result => {
+                console.log('Resultado da consulta:', result);
+                return result;
+            })
+            .catch(error => {
+                console.error('Erro na consulta SQL:', error);
+                throw error; 
+            });
     },
 
     update: async function(idProduto, nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url) {

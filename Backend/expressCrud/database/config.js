@@ -6,27 +6,27 @@ import mysql from 'mysql2';
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
+  password: "jaidene",
   database: "lionEletronics",
-  port: 3306,
+  port: 3306
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error("Erro na conexão com o banco de dados:", err.message);
-    return;
-  }
-  console.log("Conectado ao banco de dados MySQL");
-});
+// db.connect((err) => {
+//   if (err) {
+//     console.error("Erro na conexão com o banco de dados:", err.message);
+//     return;
+//   }
+//   console.log("Conectado ao banco de dados MySQL");
+// });
 
-// connetion.query('CREATE DATABASE IF NOT EXISTS lionEletronics', (err) => {
+// db.query('CREATE DATABASE IF NOT EXISTS lionEletronics', (err) => {
 //     if (err) {
 //         console.error('Erro ao criar banco de dados:', err.message);
 //         return;
 //     }
 //     console.log('Banco de dados "lionEletronics" criado ou já existente');
 
-//     connetion.changeUser({ database: 'lionEletronics' }, (err) => {
+//     db.changeUser({ database: 'lionEletronics' }, (err) => {
 //         if (err) {
 //             console.error('Erro ao conectar ao banco de dados:', err.message);
 //             return;
@@ -35,7 +35,6 @@ db.connect((err) => {
 //     });
 // });
 
-// Conectar ao banco de dados 'ecommerce'
 
 
 export default db;
