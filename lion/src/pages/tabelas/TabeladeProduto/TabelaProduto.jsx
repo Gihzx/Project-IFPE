@@ -154,12 +154,14 @@ function TabelaProduto() {
                 onChange={(e) => setStatus_disponibilidade(e.target.value)}
               >
                 <option value="Disponivel">Disponível</option>
+                <option value="Indefinido">Indefinido</option>
                 <option value="Indisponivel">Indisponível</option>
               </select>
               <select
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
+                <option value="Indefinido">Indefinido</option>
                 <option value="Celular">Celular</option>
                 <option value="Computador">Computador</option>
                 <option value="Fones">Fones</option>

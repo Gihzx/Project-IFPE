@@ -27,6 +27,22 @@ router.get('/:idProduto', function (req, res){
         res.status(500).send('Erro ao listar "produto"');
     });
 })
+router.get('/categoria/:categoria', async (req, res) => {
+    try {
+        const { categoria } = req.params;
+        const [produtos] = await dao.buscarPorCategoria(categoria);
+
+        if (produtos.length) {
+            res.json(produtos);
+        } else {
+            res.status(404).send('Nenhum produto encontrado para essa categoria.');
+        }
+    } catch (error) {
+        console.error('Erro na busca por categoria:', error);
+        res.status(500).send(error.message);
+    }
+});
+
 
 router.post('/', function(req, res){
     const {nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url} = req.body;
