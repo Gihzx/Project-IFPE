@@ -1,56 +1,89 @@
+/* Container principal do carrossel */
 .container {
   max-width: 95vw;
-  padding: 0 2rem;
+  padding: 0 1rem;
   margin-top: 5rem;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: aliceblue;
 }
-.container .carousel {
+
+/* Carrossel com rolagem suave */
+.container .carrosel {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
+  width: 100%;
 }
-.container .carousel::-webkit-scrollbar {
+
+.container .carrosel::-webkit-scrollbar {
   display: none;
 }
-.container .carousel .item {
-  background-color: aliceblue;
+
+/* Itens do carrossel */
+.container .carrosel .item {
   margin: 10px;
-  padding: 10px;
+  padding: 11px;
+  min-width: 200px;
   flex: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+  background-color: white;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
-.cotaicontainerner .carousel .item .image img {
+
+.container .carrosel .item:hover {
+  transform: scale(1.05); /* Aumenta levemente ao passar o mouse */
+}
+
+/* Estilo da imagem dentro do item */
+.container .carrosel .item .image img {
   width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
+  border-radius: 8px;
 }
-.container .carousel .botoes button {
-  background-color: transparent;
+
+/* Botões de navegação */
+.container .botoes {
+  position: absolute;
+  top: 50%;
+  width: 98.5%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.container .botoes button {
+  background-color: rgba(255, 255, 255, 0.7);
   border: none;
   width: 40px;
   height: 40px;
   cursor: pointer;
-}
-
-.container {
-  margin-top: 70px; /* Adiciona espaço entre o carrossel e a NavBar */
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
-.carrosel {
+  border-radius: 50%;
   display: flex;
-  flex-direction: row; /* Garante que os itens fiquem em linha */
-  overflow: hidden; /* Oculta a barra de rolagem */
-  scroll-behavior: smooth; /* Rolagem suave */
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
-.item {
-  min-width: 200px;
-  margin-right: 10px;
+.container .botoes button:hover {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .image img {
   width: 100%;
   height: auto;
 }
+
+/* Ajuste responsivo para telas menores */
+/* @media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .container .carrosel .item {
+    min-width: 150px;
+  }
+} */
