@@ -57,7 +57,9 @@ function NavBar() {
             <a href="/login">
               <FiUser color="#fff" size={28} />
             </a>
+
             <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+
             <span className="status">1</span>
             <FiAlignJustify color="#fff" size={28} onClick={handlerOpenMenu} />
             {openMenu && <Menu />}
