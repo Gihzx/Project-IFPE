@@ -7,10 +7,15 @@ let operations = {
     findById: function(idUsuario){
         return db.promise().query('SELECT * FROM usuarios WHERE idUsuario = ?', [idUsuario]);
     },
+    findByEmailAndPassword: function(email, senha) {
+        return db.promise().query('SELECT emailCliente, senha FROM usuarios WHERE emailCliente = ? AND senha = ?', 
+            [email, senha]
+        );
+    },
     save: function(cpf, tipo, logradouro, numero, cidade, nomeCliente, emailCliente, senha){
         return db.promise().execute(
             'INSERT INTO usuarios (nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ? )',
-            [nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo]
+            [ logradouro,cpf, nomeCliente, cidade, numero, emailCliente, senha, tipo]
         );
     },
     update: function(idUsuario, nomeCliente, cpf, logradouro, numero, cidade,  emailCliente, senha, tipo){
