@@ -4,6 +4,7 @@ import "./RegistrarConta.css";
 import "../../GlobalStylesForm.css";
 import Logo from "../../assets/logo-sm.svg";
 import api from "../../api"
+import Swal from "sweetalert2";
 
 function RegistrarConta() {
   const navigate = useNavigate();
@@ -21,6 +22,18 @@ function RegistrarConta() {
   });
 
   const messages = [];
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    }
+  });
 
   const nextToStep = () => {
     setStep((prevState) => prevState + 1);
@@ -71,7 +84,12 @@ function RegistrarConta() {
     let isValido = ValidData(usuario);
 
     if (!isValido) {
-      console.log(`${messages}`);
+      messages.forEach((msg) => {
+        Toast.fire({
+          icon: "error",
+          title: msg
+        });
+      })
       return;
     }
     
@@ -87,10 +105,13 @@ function RegistrarConta() {
     })
     .then(response => {
       console.log(response)
-      navigate("/produtoPages")
+      navigate("/login")
     })
     .catch(error => {
-      console.log(error)
+      Toast.fire({
+        icon: "error",
+        title: error.response.data
+      });
     })
   }
 

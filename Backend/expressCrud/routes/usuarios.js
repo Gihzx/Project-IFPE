@@ -44,6 +44,26 @@ router.post('/', function (req, res) {
         });
 });
 
+router.post('/login', function (req, res) {
+    const {email, senha} = req.body;
+    dao.findByEmailAndPassword(email, senha)
+        .then((results) => {
+            if(results.length > 0) {
+                const result = {
+                    email: results[0][0].emailCliente,
+                    senha: results[0][0].senha
+                }
+                res.json(result)
+            } else {
+                res.status(404).send('Usuário não encontrado.');
+            }
+        })
+        .catch(error => {
+            console.warn(error);
+            res.status(500).send('Erro ao buscar Usuário.')
+        })
+});
+
 router.put('/:idUsuarios', function(req, res) {
     const idUsuarios = req.params.idUsuarios;
     const { nomeCliente, cpf,  logradouro, numero, cidade, emailCliente, senha, tipo } = req.body;
