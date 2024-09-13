@@ -1,19 +1,24 @@
 import { useNavigate } from "react-router-dom";
-function Card(prop) {
+
+function Card({ idProduto, url, nome, preco }) {
   const navigate = useNavigate();
 
   const handleBuyClick = () => {
-    navigate("/descricao"); // Navega para a rota "/descricao"
+    if (idProduto) {
+      navigate(`/descricao/${idProduto}`); 
+    } else {
+      console.error("ID do produto não encontrado!");
+    }
   };
 
   return (
     <div className="card-produtos">
       <div className="header-card">
-        <img src={prop.url} alt="img" className="img" />
+        <img src={url.replace(/\w\.jpg/gi, 'T.jpg')} alt="img" className="img" />
       </div>
       <div className="body-card">
-        <p>{prop.nome} </p>
-        <p>{prop.preco}</p>
+        <p>{nome}</p>
+        <p>{preco}</p>
       </div>
       <div className="footer-card">
         <button className="btn-buy" onClick={handleBuyClick}>

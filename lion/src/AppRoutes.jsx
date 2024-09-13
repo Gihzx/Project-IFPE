@@ -13,7 +13,6 @@ import ProdutosPages from "./pages/Produtos/ProdutosPages";
 import Carrosel from "./components/molecules/carrossel/Carrosel";
 import DescricaoProduto from "./pages/decricaoProduto/DescricaoProduto";
 import TabelaProduto from "./pages/tabelas/TabeladeProduto/TabelaProduto";
-import PageDescricao from "./pages/decricaoProduto/pageDescricao/PageDescricao";
 
 function AppRoutes() {
   return (
@@ -32,8 +31,9 @@ function AppRoutes() {
         <Route path="/produtoPages" element={<ProdutosPages />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/carrossel" element={<Carrosel />} />
-        <Route path="/descricao" element={<DescricaoProduto />} />
-        <Route path="/PageDescricao" element={<PageDescricao />} />
+        {/* Remover a rota abaixo para evitar conflito */}
+        {/* <Route path="/descricao" element={<DescricaoProduto />} /> */}
+        <Route path="/descricao/:idProduto" element={<DescricaoProduto />} />
       </Routes>
     </BrowserRouter>
   );

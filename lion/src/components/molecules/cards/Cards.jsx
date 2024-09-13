@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import imgRelogio from "../../../assets/Captura_de_tela_2024-08-28_055659-removebg-preview.png";
-import "./cardsStyles.css"; // Certifique-se de que está importando o arquivo CSS corretamente
+import "./cardsStyles.css"; 
 
 function Cards() {
   const produtos = [

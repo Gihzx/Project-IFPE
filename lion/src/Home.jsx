@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Importa o hook para redirecionamento
 import Card from "./components/atoms/Card";
 import api from "./api";
 
 function Home({ searchTerm = "", category = "" }) {
   const [produtos, setProdutos] = useState([]);
+  const navigate = useNavigate(); // Hook para redirecionar para outra rota
 
   useEffect(() => {
     handleFecht();
@@ -37,6 +39,11 @@ function Home({ searchTerm = "", category = "" }) {
     ? filteredProducts
     : filteredCategories;
 
+  // Função para redirecionar ao clicar no produto
+  const handleProdutoClick = (idProduto) => {
+    navigate(`/descricao/${idProduto}`); // Redireciona para a página de detalhes do produto
+  };
+
   return (
     <>
       <div className="container-card-produtos">
@@ -44,9 +51,11 @@ function Home({ searchTerm = "", category = "" }) {
           produtosParaMostrar.map((produto) => (
             <Card
               key={produto.idProduto}
+              idProduto={produto.idProduto}
               url={produto.url}
               nome={produto.nomeProduto}
               preco={produto.preco}
+              onClick={() => handleProdutoClick(produto.idProduto)} 
             />
           ))
         ) : (

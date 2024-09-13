@@ -1,28 +1,27 @@
-import "./descricao.css";
-import NavBar from "../../components/molecules/navBar/NavBar";
-import { useEffect, useState } from "react";
+import "../decricaoProduto/descricao.css";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import api from "../../api";
+import NavBar from "../../components/molecules/navBar/NavBar";
+
 
 function DescricaoProduto() {
-  const [produtos, setProdutos] = useState([]);
-  const [produtoSelecionado, setProdutoSelecionado] = useState(null); // Estado para o produto selecionado
+  const { idProduto } = useParams();  
+  const [produtoSelecionado, setProdutoSelecionado] = useState(null);
 
   useEffect(() => {
-    fetchProdutos();
-  }, []);
-
-  const fetchProdutos = async () => {
-    try {
-      const response = await api.get("/produtos");
-      console.log(response.data);
-      setProdutos(response.data);
-    } catch (error) {
-      console.log(`erro ao buscar dados ${error}`);
+    if (idProduto) {
+      fetchProduto(idProduto);  
     }
-  };
+  }, [idProduto]);
 
-  const selecionarProduto = (produto) => {
-    setProdutoSelecionado(produto); // Define o produto clicado como o selecionado
+  const fetchProduto = async (idProduto) => {
+    try {
+      const response = await api.get(`/produtos/${idProduto}`);
+      setProdutoSelecionado(response.data);
+    } catch (error) {
+      console.log(`Erro ao buscar dados do produto: ${error}`);
+    }
   };
 
   return (
@@ -30,41 +29,25 @@ function DescricaoProduto() {
       <NavBar />
       <section>
         <div className="ContainerProduto">
-          <div>
-
-            {/* Verificação para garantir que produtoSelecionado não é null antes de acessar a url */}
-            {produtoSelecionado ? (
-              <img src={produtoSelecionado.url} alt={produtoSelecionado.nomeProduto} />
-            ) : (
-              <img
-                src="https://portal.crea-sc.org.br/wp-content/uploads/2017/11/imagem-indisponivel-para-produtos-sem-imagem_15_5-W.jpg"
-                alt="imagem padrão"
-              />
-            )}
-          </div>
-          <div className="infos">
-            {produtoSelecionado ? (
-              <div>
+          {produtoSelecionado ? (
+            <div className="produto-detalhes">
+              <div className="imagem">
+                <img src={produtoSelecionado.url.replace(/\w\.jpg/gi, 'W.jpg')} alt={produtoSelecionado.nomeProduto} />
+              </div>
+              <div className="infos">
                 <h6>COD: {produtoSelecionado.idProduto}</h6>
                 <h3>{produtoSelecionado.nomeProduto}</h3>
                 <h4>{produtoSelecionado.marca}</h4>
-                <h4>{produtoSelecionado.preco}</h4>
+                <h4>R${produtoSelecionado.preco}</h4>
                 <h6>Descrição:</h6>
                 <p>{produtoSelecionado.descricao}</p>
                 <p>{produtoSelecionado.status_disponibilidade}</p>
+                <p className="button-descricao">Adicionar ao carrinho</p>
               </div>
-            ) : (
-              produtos.map((produto, index) => (
-                <div key={index} onClick={() => selecionarProduto(produto)} style={{ cursor: 'pointer' }}>
-                  <h3>{produto.nomeProduto}</h3>
-                  <h4>{produto.marca}</h4>
-                  <p>Clique para ver detalhes</p>
-                </div>
-              ))
-
-            )}
-          </div>
-          <p className="button-descricao">Adicionar ao carrinho</p>
+            </div>
+          ) : (
+            <p>Carregando informações do produto...</p>
+          )}
         </div>
       </section>
     </>
