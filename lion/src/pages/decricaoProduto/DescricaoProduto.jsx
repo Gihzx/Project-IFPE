@@ -37,7 +37,7 @@ function DescricaoProduto() {
               <img src={produtoSelecionado.url} alt={produtoSelecionado.nomeProduto} />
             ) : (
               <img
-                src="https://http2.mlstatic.com/D_916682-MLA47782359266_102021-W.jpg"
+                src="https://portal.crea-sc.org.br/wp-content/uploads/2017/11/imagem-indisponivel-para-produtos-sem-imagem_15_5-W.jpg"
                 alt="imagem padrão"
               />
             )}
