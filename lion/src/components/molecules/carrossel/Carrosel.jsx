@@ -3,7 +3,7 @@ import { GoChevronLeft } from "react-icons/go";
 
 import "./style.css";
 import { useRef } from "react";
-function Carrosel({setCategory}) {
+function Carrosel({ setCategory }) {
   const produtos = [
     {
       id: 1,
@@ -11,7 +11,7 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 1",
       preco: 10,
       imagem: "https://http2.mlstatic.com/D_958009-MLA71782868134_092023-T.jpg",
-      categoria: "celulares"
+      categoria: "celulares",
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 2",
       preco: 11,
       imagem: "https://http2.mlstatic.com/D_704937-MLU77327941971_062024-T.jpg",
-      categoria: "relogio"
+      categoria: "relogio",
     },
     {
       id: 3,
@@ -27,29 +27,29 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 3",
       preco: 12,
       imagem: "https://http2.mlstatic.com/D_609485-MLU76796912071_062024-T.jpg",
-      categoria: "computadores"
+      categoria: "computadores",
     },
-    // {
-    //   id: 4,
-    //   nome: "Notebook",
-    //   descricao: "Descrição 4",
-    //   preco: 13,
-    //   imagem: "https://http2.mlstatic.com/D_614885-MLA49588273946_042022-T.jpg",
-    // },
-    // {
-    //   id: 5,
-    //   nome: "Tablet",
-    //   descricao: "Descrição 5",
-    //   preco: 13,
-    //   imagem: "https://http2.mlstatic.com/D_963756-MLU75422084542_042024-T.jpg",
-    // },
+    {
+      id: 4,
+      nome: "Notebook",
+      descricao: "Descrição 4",
+      preco: 13,
+      imagem: "https://http2.mlstatic.com/D_614885-MLA49588273946_042022-T.jpg",
+    },
+    {
+      id: 5,
+      nome: "Tablet",
+      descricao: "Descrição 5",
+      preco: 13,
+      imagem: "https://http2.mlstatic.com/D_963756-MLU75422084542_042024-T.jpg",
+    },
     {
       id: 6,
       nome: "TVs",
       descricao: "Descrição 6",
       preco: 13,
       imagem: "https://http2.mlstatic.com/D_763352-MLU77595801805_072024-T.jpg",
-      categoria: "tvs"
+      categoria: "tvs",
     },
     {
       id: 7,
@@ -57,7 +57,7 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 7",
       preco: 13,
       imagem: "https://http2.mlstatic.com/D_974026-MLU77446199300_072024-T.jpg",
-      categoria: "fone"
+      categoria: "fone",
     },
     {
       id: 8,
@@ -65,9 +65,8 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 8",
       preco: 13,
       imagem: "http://http2.mlstatic.com/D_757458-MLA53486418774_012023-T.jpg",
-      categoria: "games"
-    }
-
+      categoria: "games",
+    },
   ];
   const carrosel = useRef(null);
   const handleRightClick = (e) => {
@@ -86,7 +85,10 @@ function Carrosel({setCategory}) {
         <div className="carrosel" ref={carrosel}>
           {produtos.map((produto) => (
             <div className="item" key={produto.id}>
-              <div className="image" onClick={() => setCategory(produto.categoria)}>
+              <div
+                className="image"
+                onClick={() => setCategory(produto.categoria)}
+              >
                 <img src={produto.imagem} alt={produto.nome} />
               </div>
               <div className="info">

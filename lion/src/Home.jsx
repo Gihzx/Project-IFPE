@@ -20,18 +20,22 @@ function Home({ searchTerm = "", category = "" }) {
 
   // Filtro por termo de busca (input do NavBar)
   const filteredProducts = produtos.filter((produto) => {
-    const nomeProduto = produto.nomeProduto || ""; 
+    const nomeProduto = produto.nomeProduto || "";
     return nomeProduto.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
   // Filtro por categoria (caso não tenha searchTerm)
   const filteredCategories = produtos.filter((produto) => {
-    const categoriaProduto = produto.categoria || ""; 
-    return category ? categoriaProduto.toLowerCase() === category.toLowerCase() : true;
+    const categoriaProduto = produto.categoria || "";
+    return category
+      ? categoriaProduto.toLowerCase() === category.toLowerCase()
+      : true;
   });
 
   // Exibe os produtos filtrados por busca se houver um termo no searchTerm, caso contrário exibe por categoria
-  const produtosParaMostrar = searchTerm ? filteredProducts : filteredCategories;
+  const produtosParaMostrar = searchTerm
+    ? filteredProducts
+    : filteredCategories;
 
   return (
     <>
