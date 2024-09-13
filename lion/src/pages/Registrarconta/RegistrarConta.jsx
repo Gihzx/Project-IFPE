@@ -1,16 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom'
 import "./RegistrarConta.css";
 import "../../GlobalStylesForm.css";
-import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-sm.svg";
+import api from "../../api"
 
 function RegistrarConta() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [usuario, setUsuario] = useState({
     nome: "",
     cpf: "",
     email: "",
     endereco: "",
+    bairro: "",
     cidade: "",
     numero: "",
     senha: "",
@@ -21,12 +24,10 @@ function RegistrarConta() {
 
   const nextToStep = () => {
     setStep((prevState) => prevState + 1);
-    console.log(step);
   };
 
   const backToStep = () => {
     setStep((prevState) => prevState - 1);
-    console.log(step);
   };
 
   /**
@@ -42,15 +43,15 @@ function RegistrarConta() {
       messages.push("O CPF é obrigatório");
     }
 
-    if (data.cpf.length != 11) {
+    if (data.cpf.length < 11 && data.cpf.length < 14) {
       messages.push("CPF Invalido");
     }
 
-    if (data.email.trim()) {
+    if (data.email.trim() == "") {
       messages.push("O email é obrigatório");
     }
 
-    if (data.senha.trim() == "" || data.repetirSenha == "") {
+    if (data.senha.trim() == "" && data.repetirSenha == "") {
       messages.push("Os campos de senha são obrigatório");
     }
 
@@ -58,22 +59,39 @@ function RegistrarConta() {
       messages.push("Os campos de senha são diferentes");
     }
 
-    return (messages.length <= 0) ? true : false
- }
+    return messages.length <= 0 ? true : false;
+  }
 
- /**
-  * 
-  * @param {usuario} usuario 
-  */
-  function RegistraUsuario(usuario){
-    let isValido = ValidData(usuario)
+  /**
+   *
+   * @param {usuario} usuario
+   */
+  function RegistraUsuario(usuario) {
+    console.log(usuario)
+    let isValido = ValidData(usuario);
 
-    if(!isValido) {
-      console.log(`${messages}`)
+    if (!isValido) {
+      console.log(`${messages}`);
       return;
     }
-
-    console.log(`Usuário salvo com sucesso! ${usuario}`)
+    
+    api.post(`/usuarios`, {
+      nomeCliente: usuario.nome,
+      cpf: usuario.cpf,
+      emailCliente: usuario.email,
+      logradouro: usuario.endereco,
+      numero: usuario.numero,
+      cidade: usuario.cidade,
+      senha: usuario.senha,
+      tipo: 0,
+    })
+    .then(response => {
+      console.log(response)
+      navigate("/produtoPages")
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 
   return (
@@ -91,28 +109,49 @@ function RegistrarConta() {
             <>
               <div className="container-items-form">
                 <label htmlFor="Nome">Nome</label>
-                <input 
-                  id="Nome" 
-                  type="text" 
-                  className="validate" 
-                  value={usuario.nome}
-                  onChange={(e) => setUsuario((prevState) => ({ ...prevState, nome: e.target.value }))}
+                <input
+                  id="Nome"
+                  type="text"
+                  className="validate"
+                  value={usuario.nome || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      nome: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
               <div className="container-items-form">
                 <label htmlFor="cpf">CPF</label>
-                <input id="cpf" type="text" className="validate" 
-                value={usuario.cpf}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, cpf: e.target.value }))}
+                <input
+                  id="cpf"
+                  type="text"
+                  className="validate"
+                  value={usuario.cpf || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      cpf: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
               <div className="container-items-form">
                 <label htmlFor="email">Email</label>
-                <input id="email" type="email" className="validate" 
-                value={usuario.email}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, email: e.target.value }))}
+                <input
+                  id="email"
+                  type="email"
+                  className="validate"
+                  value={usuario.email || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      email: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </>
@@ -120,35 +159,83 @@ function RegistrarConta() {
             <>
               <div className="container-items-form">
                 <label htmlFor="endereco">Endereço</label>
-                <input id="endereco" type="text" className="validate" 
-                value={usuario.endereco}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, endereco: e.target.value }))}
+                <input
+                  id="endereco"
+                  type="text"
+                  className="validate"
+                  value={usuario.endereco || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      endereco: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              <div className="container-items-form">
+                <label htmlFor="bairro">Bairro</label>
+                <input
+                  id="bairro"
+                  type="text"
+                  className="validate"
+                  value={usuario.bairro || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      bairro: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
               <div className="container-items-form">
                 <label htmlFor="cidade">Cidade</label>
-                <input id="cidade" type="text" className="validate" 
-                value={usuario.cidade}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, cidade: e.target.value }))}
-                />
-              </div>
-
-              <div className="container-items-form">
-                <label htmlFor="numero">Número</label>
-                <input id="numero" type="text" className="validate" 
-                value={usuario.numero}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, numero: e.target.value }))}
+                <input
+                  id="cidade"
+                  type="text"
+                  className="validate"
+                  value={usuario.cidade || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      cidade: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </>
           ) : (
             <>
               <div className="container-items-form">
+                <label htmlFor="numero">Número</label>
+                <input
+                  id="numero"
+                  type="text"
+                  className="validate"
+                  value={usuario.numero || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      numero: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              <div className="container-items-form">
                 <label htmlFor="password">Senha</label>
-                <input id="password" type="password" className="validate" 
-                value={usuario.password}
-                onChange={(e) => setUsuario((prevState) => ({ ...prevState, password: e.target.value }))}
+                <input
+                  id="password"
+                  type="password"
+                  className="validate"
+                  value={usuario.senha || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      senha: e.target.value,
+                    }))
+                  }
                 />
               </div>
 
@@ -158,8 +245,13 @@ function RegistrarConta() {
                   id="confirm-password"
                   type="password"
                   className="validate"
-                  value={usuario.repetirSenha}
-                  onChange={(e) => setUsuario((prevState) => ({ ...prevState, repetirSenha: e.target.value }))}
+                  value={usuario.repetirSenha || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      repetirSenha: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </>
@@ -186,11 +278,13 @@ function RegistrarConta() {
             <button type="button" className="btn-submit" onClick={backToStep}>
               Anterior
             </button>
-            <Link to="/produtoPages">
-              <button type="submit" className="btn-submit" onClick={RegistraUsuario(usuario)}>
-                Registrar
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="btn-submit"
+              onClick={() => RegistraUsuario(usuario)}
+            >
+              Registrar
+            </button>
           </div>
         )}
       </div>
