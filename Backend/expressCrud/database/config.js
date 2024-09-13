@@ -1,12 +1,11 @@
-
-import mysql from 'mysql2';
+import mysql from "mysql2";
 
 //Conexão inicial com o banco de dados e a criação do database
 
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "jaidene",
+  password: "Ironildes@28",
   database: "lionEletronics",
   port: 3306
 });
@@ -35,7 +34,4 @@ const db = mysql.createConnection({
 //     });
 // });
 
-
-
 export default db;
-

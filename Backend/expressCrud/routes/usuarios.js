@@ -31,9 +31,9 @@ router.get('/:idUsuarios', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    const { cpf, tipo, nomeCliente, emailCliente, senha } = req.body;
+    const { cpf, tipo, nomeCliente, emailCliente, senha, logradouro, numero, cidade } = req.body;
 
-    dao.save(cpf, tipo, nomeCliente, emailCliente, senha)
+    dao.save(cpf, tipo, nomeCliente, emailCliente, senha, logradouro, numero, cidade)
         .then((results) => {
             const result = results[0]; 
             res.status(201).json({ idUsuario: result.insertId});
