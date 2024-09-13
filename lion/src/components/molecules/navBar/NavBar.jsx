@@ -6,34 +6,22 @@ import Menu from "../../atoms/Menu/menu";
 import { IoSearch } from "react-icons/io5";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
 
-function NavBar() {
+
+function NavBar({ setSearchTerm }) {
   const [openMenu, setOpenMenu] = useState(false);
   const [search, setSearch] = useState("");
   const [produtos, setProdutos] = useState([]);
 
-  function handlerOpenMenu() {
+  function handleOpenMenu() {
     setOpenMenu((prevState) => !prevState);
   }
 
-  useEffect(() => {
-    fetchProdutos();
-  }, []);
 
-  const fetchProdutos = async () => {
-    try {
-      const response = await api.get("/produtos");
-      setProdutos(response.data);
-      console.log(response.data); // Verifique os dados recebidos
-    } catch (error) {
-      console.error("Erro ao buscar dados:", error);
-    }
+  // Função para lidar com a entrada no campo de busca
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value); // Atualiza o termo de busca no estado do componente pai
   };
 
-  const filteredItems = produtos.filter(
-    (item) =>
-      item.nomeProduto &&
-      item.nomeProduto.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
     <>
@@ -44,6 +32,16 @@ function NavBar() {
         </div>
         <div className="menu">
           <input
+
+            type="text"
+            placeholder="O que você está buscando?"
+            onChange={handleInputChange}
+          />
+          <div className="icones">
+            <a href="/login">
+              <FiUser color="#fff" size={28} />
+            </a>
+
             type="search"
             placeholder="O que você está buscando?"
             value={search}
@@ -58,10 +56,13 @@ function NavBar() {
               <FiUser color="#fff" size={28} />
             </a>
 
+
             <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
 
             <span className="status">1</span>
-            <FiAlignJustify color="#fff" size={28} onClick={handlerOpenMenu} />
+
+            <FiAlignJustify color="#fff" size={28} onClick={handleOpenMenu} />
+
             {openMenu && <Menu />}
           </div>
         </div>

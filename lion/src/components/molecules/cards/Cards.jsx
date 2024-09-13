@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import imgRelogio from "../../../assets/Captura_de_tela_2024-08-28_055659-removebg-preview.png";
-import "./cardsStyles.css";
+import "./cardsStyles.css"; // Certifique-se de que está importando o arquivo CSS corretamente
 
 function Cards() {
   const produtos = [
@@ -15,11 +15,11 @@ function Cards() {
   return (
     <>
       {produtos.map((produto) => (
-        <Card key={produto.id} style={{ width: "18rem", marginBottom: "1rem" }}>
-          <Card.Img variant="top" src={imgRelogio} className="imgVendas" />
-          <Card.Body>
-            <Card.Title>{produto.nome}</Card.Title>
-            <Card.Text>
+        <Card key={produto.id} className="card">
+          <Card.Img variant="top" src={imgRelogio} className="card-img" />
+          <Card.Body className="card-body">
+            <Card.Title className="card-title">{produto.nome}</Card.Title>
+            <Card.Text className="card-text">
               {produto.descricao} - R$ {produto.preco.toFixed(2)}
             </Card.Text>
             <Button variant="primary">Comprar</Button>
