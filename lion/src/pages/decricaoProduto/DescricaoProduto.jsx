@@ -1,6 +1,5 @@
 import "./descricao.css";
 import NavBar from "../../components/molecules/navBar/NavBar";
-
 import { useEffect, useState } from "react";
 import api from "../../api";
 
@@ -32,6 +31,7 @@ function DescricaoProduto() {
       <section>
         <div className="ContainerProduto">
           <div>
+
             {/* Verificação para garantir que produtoSelecionado não é null antes de acessar a url */}
             {produtoSelecionado ? (
               <img src={produtoSelecionado.url} alt={produtoSelecionado.nomeProduto} />
@@ -61,9 +61,10 @@ function DescricaoProduto() {
                   <p>Clique para ver detalhes</p>
                 </div>
               ))
+
             )}
-            <p className="button-descricao">Adicionar ao carrinho</p>
           </div>
+          <p className="button-descricao">Adicionar ao carrinho</p>
         </div>
       </section>
     </>

@@ -66,11 +66,14 @@
 .cartCarrinho {
   position: relative;
 }
-
+.botaoIcone {
+  background: none;
+  border: none;
+}
 .status {
   position: absolute;
-  top: 16px;
-  right: 8.8rem;
+  top: 1rem;
+  right: 6.5rem;
   width: 15px;
   height: 15px;
   border-radius: 20px;
