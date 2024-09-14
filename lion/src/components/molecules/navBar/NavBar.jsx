@@ -1,5 +1,6 @@
 import { useState } from "react";
 import img from "../../../assets/logo-sm.svg";
+import { Link } from "react-router-dom";
 import "../navBar/navBar.css";
 import Menu from "../../atoms/Menu/menu";
 import { FiUser, FiShoppingCart, FiAlignJustify } from "react-icons/fi";
@@ -10,10 +11,8 @@ function NavBar({ setSearchTerm }) {
   function handleOpenMenu() {
     setOpenMenu((prevState) => !prevState);
   }
-
-  // Função para lidar com a entrada no campo de busca
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value); // Atualiza o termo de busca no estado do componente pai
+    setSearchTerm(e.target.value);
   };
 
   return (
@@ -33,7 +32,9 @@ function NavBar({ setSearchTerm }) {
             <a href="/login">
               <FiUser color="#fff" size={28} />
             </a>
-            <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+            <Link to="/carrinho">
+              <FiShoppingCart color="#fff" size={28} className="cartCarrinho" />
+            </Link>
             <span className="status">1</span>
             <FiAlignJustify color="#fff" size={28} onClick={handleOpenMenu} />
             {openMenu && <Menu />}

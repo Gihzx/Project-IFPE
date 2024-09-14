@@ -70,7 +70,6 @@
   padding: 5px;
 }
 
-/* Estilo para o botão X*/
 .remover {
   position: absolute;
   top: 5px;
@@ -105,7 +104,6 @@
   background-color: #218838;
 }
 
-/* Estilo do pop-up */
 .popup {
   position: fixed;
   top: 0;

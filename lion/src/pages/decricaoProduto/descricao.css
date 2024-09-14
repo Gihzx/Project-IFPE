@@ -13,9 +13,15 @@
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
+  border: none;
 }
 .button-descricao:hover {
   background-color: hsl(129, 35%, 47%);
 }
 
-
+.produto-detalhes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 9rem;
+}

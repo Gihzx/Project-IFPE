@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/molecules/navBar/NavBar";
-import img from "../../assets/Captura_de_tela_2024-08-28_055659-removebg-preview.png";
 import "./carrinho.css";
 
 function Carrinho() {
@@ -42,13 +41,13 @@ function Carrinho() {
               <div key={produto.id}>
                 <div className="container-img">
                   <img
-                    src={img}
+                    src={produto.url}
                     alt="Produto no carrinho"
                     className="imgCarrionho"
                   />
                   <div className="inforCards">
                     <span className="valor">
-                      <h5>{produto.nome}</h5>
+                      <h5>{produto.nomeProduto}</h5>
                       <p className="preco">R$: {produto.preco.toFixed(2)}</p>
                     </span>
                     <p>{produto.descricao}</p>
