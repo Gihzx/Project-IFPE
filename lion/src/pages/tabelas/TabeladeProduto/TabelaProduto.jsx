@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import NavBar from "../../../components/molecules/navBar/NavBar";
-import { TiPencil } from "react-icons/ti";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { FcCheckmark } from "react-icons/fc";
 import api from "../../../api";
 import "./style.css";
 import { useEffect, useState } from "react";
@@ -208,11 +206,9 @@ function TabelaProduto() {
               <td>{produto.status_disponibilidade}</td>
               <td>{produto.preco}</td>
               <td className="icones-react">
-                <TiPencil />
                 <RiDeleteBin6Line
                   onClick={() => handleDelete(produto.idProduto)}
                 />
-                <FcCheckmark />
               </td>
             </tr>
           ))}
