@@ -12,16 +12,24 @@ let operations = {
             [email, senha]
         );
     },
-    save: function(cpf, tipo, logradouro, numero, cidade, nomeCliente, emailCliente, senha){
+    findByCpf: function(cpf) {
+        return db.promise().query('SELECT * FROM usuarios WHERE cpf = ?', [cpf]);
+    },
+    findByEmail: function(email) {
+        return db.promise().query('SELECT * FROM usuarios WHERE emailCliente = ?', [email]);
+    },
+    
+    
+    save: function(nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo){
         return db.promise().execute(
-            'INSERT INTO usuarios (nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ? )',
-            [ logradouro,cpf, nomeCliente, cidade, numero, emailCliente, senha, tipo]
+            'INSERT INTO usuarios (nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ? )',
+            [ nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo]
         );
     },
-    update: function(idUsuario, nomeCliente, cpf, logradouro, numero, cidade,  emailCliente, senha, tipo){
+    update: function(idUsuario, nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo){
         return db.promise().execute(
-            'UPDATE usuarios SET nomeCliente = ?, cpf = ?, logradouro = ?, rua = ?, cidade = ?, emailCliente = ?, senha = ?, tipo = ? WHERE idUsuario = ?',
-            [nomeCliente, cpf, emailCliente, senha, tipo, idUsuario]
+            'UPDATE usuarios SET nomeCliente = ?, cpf = ?, logradouro = ?, numero = ?, bairro = ?, cidade = ?, emailCliente = ?, senha = ?, tipo = ? WHERE idUsuario = ?',
+            [nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo, idUsuario]
         );
     },
     remove: function(idUsuario){

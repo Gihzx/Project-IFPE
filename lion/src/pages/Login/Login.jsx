@@ -11,7 +11,7 @@ function Login() {
   const [usuario, setUsuario] = useState({
     email: '',
     senha: ''
-  })
+  });
   const messages = [];
 
   const Toast = Swal.mixin({
@@ -31,15 +31,16 @@ function Login() {
    * @param {usuario} usuario 
    */
   function validData(usuario) {
-    if(usuario.email.trim() == '') {
-      messages.push('email é obrigatório');
+    messages.length = 0; // Limpar mensagens anteriores
+    if (usuario.email.trim() === '') {
+      messages.push('O email é obrigatório');
     }
 
-    if(usuario.senha.trim() == '') {
-      messages.push('senha é obrigatória');
+    if (usuario.senha.trim() === '') {
+      messages.push('A senha é obrigatória');
     }
 
-    return (messages.length <= 0) ? true : false;
+    return (messages.length <= 0);
   }
 
   /**
@@ -47,45 +48,65 @@ function Login() {
    * @param {usuario} credenciais 
    */
   function RealizaLogin(credenciais) {
-      let isValid = validData(credenciais);
+    let isValid = validData(credenciais);
 
-      if(!isValid) {
-        messages.forEach((msg) => {
-          Toast.fire({
-            icon: "error",
-            title: msg
-          });
-        }) 
-        return;
-      }
-
-      api.post('/usuarios/login', credenciais)
-        .then(response => {
-          console.log(response)
-          navigate("/produtoPages")
-        })
-        .catch(error => {
-          Toast.fire({
-            icon: "error",
-            title: error.response.data
-          });
+    if (!isValid) {
+      messages.forEach((msg) => {
+        Toast.fire({
+          icon: "error",
+          title: msg
         });
+      });
+      return;
+    }
+
+    api.post('/usuarios/login', credenciais)
+      .then(response => {
+        // Login realizado com sucesso
+        Toast.fire({
+          icon: "success",
+          title: "Login realizado com sucesso!"
+        });
+        navigate("/produtoPages");
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 404) {
+          // Exibe mensagem "Usuário não cadastrado"
+          Toast.fire({
+            icon: "error",
+            title: "Usuário não cadastrado"
+          });
+        } else if (error.response && error.response.status === 400) {
+          // Exibe mensagem "Senha incorreta"
+          Toast.fire({
+            icon: "error",
+            title: "Senha incorreta"
+          });
+        } else {
+          // Outro erro
+          Toast.fire({
+            icon: "error",
+            title: "Erro ao tentar fazer login, tente novamente."
+          });
+        }
+      });
   }
 
   return (
     <div className="container-page">
       <div className="container-logo-form">
-        <img src={Logo} alt="" />
-        <h5>Lion Eletronics </h5>
+        <img src={Logo} alt="Lion Electronics" />
+        <h5>Lion Eletronics</h5>
       </div>
       <div className="container-form">
         <h3>Login</h3>
         <form>
           <div className="container-items-form">
             <label htmlFor="email">Email: </label>
-            <input id="email" 
-              type="email" 
-              className="validate" 
+            <input
+              id="email"
+              type="email"
+              className="validate"
               value={usuario.email || ''}
               onChange={(e) =>
                 setUsuario((prevState) => ({
@@ -98,9 +119,10 @@ function Login() {
 
           <div className="container-items-form">
             <label htmlFor="password">Senha: </label>
-            <input id="password" 
-              type="password" 
-              className="validate" 
+            <input
+              id="password"
+              type="password"
+              className="validate"
               value={usuario.senha || ''}
               onChange={(e) =>
                 setUsuario((prevState) => ({
@@ -118,10 +140,11 @@ function Login() {
 
         <span className="container-link-form">
           <a href="/registrar-conta">Registrar-se</a>
-          <a href="/recuperar-senha">Esqueceu a senha</a>
+          <a href="/recuperar-senha">Esqueceu a senha?</a>
         </span>
       </div>
     </div>
   );
 }
+
 export default Login;

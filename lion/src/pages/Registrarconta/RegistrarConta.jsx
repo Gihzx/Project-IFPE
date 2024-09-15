@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import "./RegistrarConta.css";
 import "../../GlobalStylesForm.css";
 import Logo from "../../assets/logo-sm.svg";
-import api from "../../api"
+import api from "../../api";
 import Swal from "sweetalert2";
 
 function RegistrarConta() {
@@ -14,9 +14,9 @@ function RegistrarConta() {
     cpf: "",
     email: "",
     endereco: "",
+    numero: "",
     bairro: "",
     cidade: "",
-    numero: "",
     senha: "",
     repetirSenha: "",
   });
@@ -44,43 +44,44 @@ function RegistrarConta() {
   };
 
   /**
-   *
+   * Validação dos dados do formulário
    * @param {usuario} data
    */
   function ValidData(data) {
-    if (data.nome.trim() == "") {
+    messages.length = 0; 
+    if (data.nome.trim() === "") {
       messages.push("O nome é obrigatório");
     }
 
-    if (data.cpf.trim() == "") {
+    if (data.cpf.trim() === "") {
       messages.push("O CPF é obrigatório");
     }
 
-    if (data.cpf.length < 11 && data.cpf.length < 14) {
-      messages.push("CPF Invalido");
+    if (data.cpf.length !== 11) {
+      messages.push("CPF inválido");
     }
 
-    if (data.email.trim() == "") {
+    if (data.email.trim() === "") {
       messages.push("O email é obrigatório");
     }
 
-    if (data.senha.trim() == "" && data.repetirSenha == "") {
-      messages.push("Os campos de senha são obrigatório");
+    if (data.senha.trim() === "" && data.repetirSenha === "") {
+      messages.push("Os campos de senha são obrigatórios");
     }
 
-    if (data.senha.trim() != data.repetirSenha.trim()) {
+    if (data.senha.trim() !== data.repetirSenha.trim()) {
       messages.push("Os campos de senha são diferentes");
     }
 
-    return messages.length <= 0 ? true : false;
+    return messages.length <= 0;
   }
 
   /**
-   *
+   * Registra o usuário
    * @param {usuario} usuario
    */
   function RegistraUsuario(usuario) {
-    console.log(usuario)
+    console.log(usuario);
     let isValido = ValidData(usuario);
 
     if (!isValido) {
@@ -89,30 +90,46 @@ function RegistrarConta() {
           icon: "error",
           title: msg
         });
-      })
+      });
       return;
     }
-    
+
     api.post(`/usuarios`, {
       nomeCliente: usuario.nome,
       cpf: usuario.cpf,
-      emailCliente: usuario.email,
       logradouro: usuario.endereco,
       numero: usuario.numero,
+      bairro: usuario.bairro,
       cidade: usuario.cidade,
+      emailCliente: usuario.email,
       senha: usuario.senha,
       tipo: 0,
     })
-    .then(response => {
-      console.log(response)
-      navigate("/login")
-    })
-    .catch(error => {
-      Toast.fire({
-        icon: "error",
-        title: error.response.data
+      .then(response => {
+        console.log(response);
+
+        Toast.fire({
+          icon: "success",
+          title: "Cadastrado com sucesso!"
+        });
+
+        setTimeout(() => {
+          navigate("/login");
+        }, 2000);
+      })
+      .catch(error => {
+        if (error.response && error.response.status === 400) {
+          Toast.fire({
+            icon: "error",
+            title: error.response.data 
+          });
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "Erro ao salvar usuário"
+          });
+        }
       });
-    })
   }
 
   return (
@@ -176,7 +193,7 @@ function RegistrarConta() {
                 />
               </div>
             </>
-          ) : step == 2 ? (
+          ) : step === 2 ? (
             <>
               <div className="container-items-form">
                 <label htmlFor="endereco">Endereço</label>
@@ -189,6 +206,22 @@ function RegistrarConta() {
                     setUsuario((prevState) => ({
                       ...prevState,
                       endereco: e.target.value,
+                    }))
+                  }
+                />
+              </div>
+
+              <div className="container-items-form">
+                <label htmlFor="numero">Número</label>
+                <input
+                  id="numero"
+                  type="text"
+                  className="validate"
+                  value={usuario.numero || ""}
+                  onChange={(e) =>
+                    setUsuario((prevState) => ({
+                      ...prevState,
+                      numero: e.target.value,
                     }))
                   }
                 />
@@ -209,7 +242,9 @@ function RegistrarConta() {
                   }
                 />
               </div>
-
+            </>
+          ) : (
+            <>
               <div className="container-items-form">
                 <label htmlFor="cidade">Cidade</label>
                 <input
@@ -221,24 +256,6 @@ function RegistrarConta() {
                     setUsuario((prevState) => ({
                       ...prevState,
                       cidade: e.target.value,
-                    }))
-                  }
-                />
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="container-items-form">
-                <label htmlFor="numero">Número</label>
-                <input
-                  id="numero"
-                  type="text"
-                  className="validate"
-                  value={usuario.numero || ""}
-                  onChange={(e) =>
-                    setUsuario((prevState) => ({
-                      ...prevState,
-                      numero: e.target.value,
                     }))
                   }
                 />
@@ -312,4 +329,5 @@ function RegistrarConta() {
     </div>
   );
 }
+
 export default RegistrarConta;

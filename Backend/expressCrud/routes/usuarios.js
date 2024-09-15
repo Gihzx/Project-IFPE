@@ -31,44 +31,69 @@ router.get('/:idUsuarios', function (req, res) {
 });
 
 router.post('/', function (req, res) {
-    const { cpf, tipo, nomeCliente, logradouro, numero, cidade, emailCliente, senha } = req.body;
+    const { nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo } = req.body;
 
-    dao.save(cpf, tipo, nomeCliente,  logradouro, numero, cidade, emailCliente, senha)
-        .then((results) => {
-            const result = results[0]; 
-            res.status(201).json({ idUsuario: result.insertId});
+
+    dao.findByCpf(cpf)
+        .then(([rows]) => {
+            if (rows.length > 0) {
+
+                return res.status(400).send('CPF já cadastrado.');
+            }
+            dao.save(nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo)
+                .then((results) => {
+                    const result = results[0];
+                    res.status(201).json({ idUsuario: result.insertId });
+                })
+                .catch(error => {
+                    console.error(error);
+                    res.status(500).send('Erro ao salvar Usuário');
+                });
         })
         .catch(error => {
             console.error(error);
-            res.status(500).send('Erro ao salvar Usuário');
+            res.status(500).send('Erro ao buscar CPF no banco de dados.');
         });
 });
 
+
 router.post('/login', function (req, res) {
-    const {email, senha} = req.body;
-    dao.findByEmailAndPassword(email, senha)
-        .then((results) => {
-            if(results.length > 0) {
-                const result = {
-                    email: results[0][0].emailCliente,
-                    senha: results[0][0].senha
-                }
-                res.json(result)
+    const { email, senha } = req.body;
+
+    // Primeiro, verifica se o email existe
+    dao.findByEmail(email)
+        .then(([rows]) => {
+            if (rows.length === 0) {
+                // Se o email não for encontrado, retorna uma mensagem de erro
+                return res.status(404).send('Usuário não cadastrado.');
+            }
+
+            const usuario = rows[0]; // Obtem o usuário encontrado
+
+            // Agora verifica se a senha corresponde
+            if (usuario.senha === senha) {
+                // Se a senha estiver correta, retorna o email do usuário
+                res.json({
+                    email: usuario.emailCliente,
+                    senha: usuario.senha
+                });
             } else {
-                res.status(404).send('Usuário não encontrado.');
+                // Se a senha estiver incorreta, retorna uma mensagem de erro
+                res.status(400).send('Senha incorreta.');
             }
         })
         .catch(error => {
             console.warn(error);
-            res.status(500).send('Erro ao buscar Usuário.')
-        })
+            res.status(500).send('Erro no servidor, tente novamente mais tarde.');
+        });
 });
+
 
 router.put('/:idUsuarios', function(req, res) {
     const idUsuarios = req.params.idUsuarios;
-    const { nomeCliente, cpf,  logradouro, numero, cidade, emailCliente, senha, tipo } = req.body;
+    const { nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo } = req.body;
 
-    dao.update(idUsuarios, nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo)
+    dao.update(idUsuarios, nomeCliente, cpf, logradouro, numero, bairro, cidade, emailCliente, senha, tipo)
         .then(() => {
             res.send('Usuário atualizado com sucesso.');
         })

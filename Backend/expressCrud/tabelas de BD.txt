@@ -1,11 +1,11 @@
-create database ecommerce;
-use ecommerce;
+create database lionEletronics;
+use lionEletronics;
 
-CREATE TABLE usuarios (idUsuario INTEGER PRIMARY KEY AUTO_INCREMENT, nomeCliente VARCHAR(255) not null, cpf VARCHAR(15) UNIQUE not null, logradouro VARCHAR(100) NOT NULL, numero int not null, cidade VARCHAR(50) NOT NULL,  emailCliente VARCHAR(100) not null, senha VARCHAR(10) not null, tipo TINYINT not null );
+CREATE TABLE usuarios (idUsuario INTEGER PRIMARY KEY AUTO_INCREMENT, nomeCliente VARCHAR(255) not null, cpf VARCHAR(11) UNIQUE not null, logradouro VARCHAR(100) NOT NULL, numero int not null, bairro VARCHAR(30) NOT NULL, cidade VARCHAR(50) NOT NULL,  emailCliente VARCHAR(100) not null, senha VARCHAR(10) not null, tipo TINYINT not null) AUTO_INCREMENT= 201;
 
 CREATE TABLE pedidos ( idPedido INTEGER AUTO_INCREMENT PRIMARY KEY, dataEmissao DATE not null, statusPedido VARCHAR(50) not null, idUsuario INT not null, idProduto INT not null);
 
-CREATE TABLE produtos (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,  nomeProduto VARCHAR(100) NOT NULL, modelo VARCHAR(100) NOT NULL, marca VARCHAR(30) NOT NULL, preco DECIMAL(10,2) NOT NULL, descricao TEXT NOT NULL, quantidade INTEGER, status_disponibilidade VARCHAR(30) NOT NULL, categoria VARCHAR(50) NOT NULL, url TEXT);
+CREATE TABLE produtos (idProduto INTEGER PRIMARY KEY AUTO_INCREMENT,  nomeProduto VARCHAR(100) NOT NULL, modelo VARCHAR(100) NOT NULL, marca VARCHAR(30) NOT NULL, preco DECIMAL(10,2) NOT NULL, descricao TEXT NOT NULL, quantidade INTEGER, status_disponibilidade VARCHAR(30) NOT NULL, categoria VARCHAR(50) NOT NULL, url TEXT)  AUTO_INCREMENT=601;
 
 -- INSERT DE PRODUTO EM FORMATO SQL
 
@@ -44,6 +44,11 @@ VALUES
 ('Samsung Galaxy S23 Ultra 5g Dual Sim 512 Gb', 'Galaxy S23', 'Samsung', '5099.90', 'Assista às suas séries e filmes favoritos com a melhor definição na sua tela AMOLED de 6.8. Memória RAM: 12 GB, Memória interna de 512 GB, Bateria de 5000mAh, A prova d''água', 50, 'Disponível', 'Celulares', 'http://http2.mlstatic.com/D_793727-MLA73067607684_112023-I.jpg'),
 ('Samsung Galaxy Z Flip6 256Gb - Azul', 'Galaxy Z', 'Samsung', '4699.90', 'Celular Samsung Galaxy Z Flip6 com tela dobrável de 6.7'' AMOLED Dinâmico 2x (Interno) e 3.4 AMOLED (Externo), 256GB, 12GB de RAM, Câmera Dupla Traseira de 50MP (Dual Pixel, OIS) + 12MP (Ultra Wide), Frontal de 10MP, Bateria de 4000mAh, Dual Chip, Android 14', 50, 'Disponível', 'Celulares', 'http://http2.mlstatic.com/D_756465-MLU77720428167_072024-I.jpg'),
 ('Samsung Galaxy A14 128gb - Black', 'Galaxy A14', 'Samsung', '990.00', 'Sua memória RAM de 4 GB permite que seu smartphone funcione sem problemas e sem demora ao executar várias tarefas, jogar jogos ou navegar. Tela PLS de 6.6'', Processador MediaTek MT6833 Dimensity 700 Octa-Core de 2GHz, Bateria de 5000mAh', 50, 'Disponível', 'Celulares', 'http://http2.mlstatic.com/D_869651-MLU73605012476_122023-I.jpg'),
+
+
+-- INSERT DE TVs
+INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
+VALUES
 ('Samsung Smart Tv 55 Crystal Uhd 4k 55du8000 2024', '55du8000', 'Samsung', '2699.00', 'Samsung Smart TV 55, Crystal UHD 4K 55DU8000 2024, Painel Dynamic Crystal Color, Gaming Hub, Design AirSlim, Som em Movimento Virtual, AI Energy Mode, Alexa integrada.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_882829-MLU78389491823_082024-I.jpg'),
 ('Samsung Smart Tv 43 Uhd 4k 2024', '43du7700', 'Samsung', '2079.00', 'Samsung Smart TV 43, UHD 4K 43DU7700 2024, Processador Crystal 4K, Gaming Hub, Visual livre de cabos, Som em Movimento Virtual, AI Energy Mode, Controle SolarCell.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_604875-MLU78159955352_082024-I.jpg'),
 ('Samsung Smart Tv 65 Qled 4k 2024', '65q60d', 'Samsung', '4799.00', 'Transforme os seus conteúdos em resolução próxima a 4K. Processador exclusivo da Samsung, que proporciona a melhor experiência de visualização ao realizar o upscaling de qualquer conteúdo para resolução próxima a 4K conforme a cena.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_830028-MLU78390556421_082024-I.jpg'),
@@ -59,21 +64,28 @@ VALUES
 ('Smart Tv Philips 32 Pol HdLed Hdr10 Dolby', '32phg6918/78', 'Philips', '959.00', 'A Smart Tv Philips 32 traz níveis de brilho otimizados para proporcionar cores vivas e detalhes marcantes.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_814327-MLU75134656007_032024-I.jpg'),
 ('Smart Tv 32 Led Tcl Wifi Fullhd Android Hdmi Bivolt', 'S5400af', 'Tcl', '1504.00', 'Descrição do Produto: Experimente imagens vibrantes e um desempenho ágil com a Smart TV TCL de 32, FHD. Com tecnologia LED e a plataforma Android TV, você tem acesso a uma infinidade de apps e conteúdos, além de um sistema de operação rápido e intuitivo.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_936823-MLB78587005796_082024-I.jpg'),
 ('Smart Tv 55'' Android Tv 4k Qled Philco', 'Ptv55m8gagcmbl', 'Philco', '3283.00', 'Smart TV Philco PTV55M8GAGCMBL de 55 polegadas com resolução 4K UHD, tecnologia QLED e Dolby Audio. Equipada com processador Quad Core para maior velocidade e imagens nítidas em alta definição. O Dolby Áudio proporciona som de alta qualidade em 5,1 canais', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_684784-MLU74071702278_012024-I.jpg'),
+
+-- INSERT DE computadores
+INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
+VALUES
 ('Computador Completo I5 3º G 16gb Hd Ssd 240gb Monitor Hdmi', 'Gabinete Office Premium', 'Fácil Computadores', '1129.00', 'Fácil Computadores - Com 30 anos de excelência atuando no Brasil, criamos soluções completas na área de informática. Nossos computadores são equipados com os mais recentes processadores de alta velocidade, maximizando sua produção.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_874883-MLU78823681007_082024-I.jpg'),
-('Computador Completo Strong Tech Intel I7 16gb Ssd 480gb 19 Monitor', 'Gabinete Office Strong', 'Strong Tech', '1308.00', 'Ideal para uso doméstico e corporativo.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_609485-MLU76796912071_062024-I.jpg'),
-('Notebook Vaio Fe15 Ryzen7 16gb 512gb Ssd Linux Prata Titânio', 'Ryzen 7', 'Vaio', '3314.00', 'Notebook VAIO® FE15 AMD® Ryzen 7- 5700U Linux 16GB RAM 512SSD - Prata Titânio. O VAIO FE15 é a mistura perfeita da tecnologia japonesa e praticidade brasileira. Mesmo leve com design clássico mostra o peso da marca por onde passa. Visual fino e elegante é perfeito para quem busca mobilidade com recursos de alta qualidade. Pronto para executar tarefas com o processador AMD, para uma experiência de potência e velocidade.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_700017-MLU71486439814_092023-I.jpg'),
-('Pc Gamer Completo Amd Ryzen 5 5600gt 16gb Ssd 960gb 500w 20', 'PC Gamer/BluePC', 'BluePC', '2919.00', 'Gamer Black com Lateral Transparente. Design moderno e sofisticado: Estrutura contemporânea com painéis laterais de vidro temperado para uma estética minimalista e elegante.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_602505-MLU78530704240_082024-I.jpg'),
-('Computador Completo Intel I5, 8gb Ram, Ssd 256, Monitor 19', 'Corporativo', 'BestPC', '1257.00', 'BestPC - Com 23 anos de excelência atuando no Brasil, criamos soluções completas na área de informática. Nossos computadores são equipados com os mais recentes processadores de alta velocidade, maximizando sua produção.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_894801-MLB78799482602_092024-I.jpg'),
-('Pc Completo Cpu I5 6500 / Ssd 256gb M2 / 8gb Ddr4 + Monitor', 'DESKTOP', 'Tech Power', '1527.00', 'Excelente computador para uso doméstico ou empresarial, com gabinete tipo mini que cabe em qualquer espaço e com design moderno e muito bonito. Tecnologia com baixíssimo consumo de energia.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_918592-MLU74511065059_022024-I.jpg'),
-('Notebook Gamer Acer Nitro V15 Anv15-51-57ws', 'ANV15-51-57WS', 'ACER', '1527.00', 'Intel Core I5-13420h 8gb Ram 512gb Ssd Nvidia Rtx 3050 Linux', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_757417-MLU76569758316_062024-I.jpg'),
-('Notebook Positivo Vision C15 Lumina Bar Celeron 4gb - Cinza', 'ANV15-51-57WS', 'Positivo', '1569.00', '128gb Emmc Tela 15 Hd Antirreflexo Windows 11 Tecla Link. O Notebook Vision C15 da Positivo é ideal para quem busca tecnologia. Ele possui processador Intel Celeron dual core 1,10 GHz, frequência de burstde até 2,80 GHz, 4MB cache, 2 núcleos, 2 threads, sistema operacional Windows 11 home, software adicionais Microsoft 365 incluso por 1 ano, 1 ano de assinatura dropbox 100GB, anti-vírus 30 dias e modo noturno via screen control', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_704717-MLU77757799950_072024-I.jpg'),
-('Notebook Dell Inspiron', 'I15-I120K-A25P', 'DELL', '3299.00', 'I15-i120k-a25p I5 8gb 512gb 15.6 W11', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_732627-MLU78192187606_082024-I.jpg'),
-('Notebook Lenovo Ideapad 1i Intel Core I5', 'IdeaPad 1i Gen 7', 'Lenovo', '3199.00', '1i Intel Core I5 - 1235U, 16gb RAM, 512GB SSD, Windows 11 Home, Tela 15,6'' - 82vy000xbr - Cloudgrey', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_804714-MLU74203378589_012024-I.jpg'),
-('Notebook Asus Vivobook Go 15', 'NJ732', 'Asus', '2517.00', 'É leve. É compacto. É o ASUS Vivobook Go 15. Projetado para torná-lo produtivo e mantê-lo entretido onde quer que você vá! Com processador AMD Ryzen™ 5 7520U de excelente desempenho, 8 GB de memória RAM LPDDR5¹ e até 512 GB de SSD² , ele é perfeito para seu dia a dia.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_689382-MLU75570682730_042024-I.jpg'),
-('Notebook Samsung Galaxy Book2 Intel Core I5-1235u, 8gb, 256gb, Windows 11 Home, 15,6 , Grafite', 'Book2', 'Samsung', '3169.00', 'Seja mais produtivo com o notebook Galaxy Book2 da Samsung, equipado para superar todas as suas expectativas. Com um processador I5 1235U de 12ª geração que oferece desempenho ágil e eficiente, cada tarefa se transforma de forma fluida e sem interrupções.', 50, 'Disponível', 'TVs', 'http://http2.mlstatic.com/D_965443-MLA72983129822_112023-I.jpg');
+('Computador Completo Strong Tech Intel I7 16gb Ssd 480gb 19 Monitor', 'Gabinete Office Strong', 'Strong Tech', '1308.00', 'Ideal para uso doméstico e corporativo.', 50, 'Disponível', 'computadores', 'http://http2.mlstatic.com/D_609485-MLU76796912071_062024-I.jpg'),
+('Pc Gamer Completo Amd Ryzen 5 5600gt 16gb Ssd 960gb 500w 20', 'PC Gamer/BluePC', 'BluePC', '2919.00', 'Gamer Black com Lateral Transparente. Design moderno e sofisticado: Estrutura contemporânea com painéis laterais de vidro temperado para uma estética minimalista e elegante.', 50, 'Disponível', 'computadores', 'http://http2.mlstatic.com/D_602505-MLU78530704240_082024-I.jpg'),
+('Computador Completo Intel I5, 8gb Ram, Ssd 256, Monitor 19', 'Corporativo', 'BestPC', '1257.00', 'BestPC - Com 23 anos de excelência atuando no Brasil, criamos soluções completas na área de informática. Nossos computadores são equipados com os mais recentes processadores de alta velocidade, maximizando sua produção.', 50, 'Disponível', 'computadores', 'http://http2.mlstatic.com/D_894801-MLB78799482602_092024-I.jpg'),
+('Pc Completo Cpu I5 6500 / Ssd 256gb M2 / 8gb Ddr4 + Monitor', 'DESKTOP', 'Tech Power', '1527.00', 'Excelente computador para uso doméstico ou empresarial, com gabinete tipo mini que cabe em qualquer espaço e com design moderno e muito bonito. Tecnologia com baixíssimo consumo de energia.', 50, 'Disponível', 'computadores', 'http://http2.mlstatic.com/D_918592-MLU74511065059_022024-I.jpg'),
 
+-- INSERT DE notebooks
+INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
+VALUES
+('Notebook Vaio Fe15 Ryzen7 16gb 512gb Ssd Linux Prata Titânio', 'Ryzen 7', 'Vaio', '3314.00', 'Notebook VAIO® FE15 AMD® Ryzen 7- 5700U Linux 16GB RAM 512SSD - Prata Titânio. O VAIO FE15 é a mistura perfeita da tecnologia japonesa e praticidade brasileira. Mesmo leve com design clássico mostra o peso da marca por onde passa. Visual fino e elegante é perfeito para quem busca mobilidade com recursos de alta qualidade. Pronto para executar tarefas com o processador AMD, para uma experiência de potência e velocidade.', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_700017-MLU71486439814_092023-I.jpg'),
+('Notebook Gamer Acer Nitro V15 Anv15-51-57ws', 'ANV15-51-57WS', 'ACER', '1527.00', 'Intel Core I5-13420h 8gb Ram 512gb Ssd Nvidia Rtx 3050 Linux', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_757417-MLU76569758316_062024-I.jpg'),
+('Notebook Positivo Vision C15 Lumina Bar Celeron 4gb - Cinza', 'ANV15-51-57WS', 'Positivo', '1569.00', '128gb Emmc Tela 15 Hd Antirreflexo Windows 11 Tecla Link. O Notebook Vision C15 da Positivo é ideal para quem busca tecnologia. Ele possui processador Intel Celeron dual core 1,10 GHz, frequência de burstde até 2,80 GHz, 4MB cache, 2 núcleos, 2 threads, sistema operacional Windows 11 home, software adicionais Microsoft 365 incluso por 1 ano, 1 ano de assinatura dropbox 100GB, anti-vírus 30 dias e modo noturno via screen control', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_704717-MLU77757799950_072024-I.jpg'),
+('Notebook Dell Inspiron', 'I15-I120K-A25P', 'DELL', '3299.00', 'I15-i120k-a25p I5 8gb 512gb 15.6 W11', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_732627-MLU78192187606_082024-I.jpg'),
+('Notebook Lenovo Ideapad 1i Intel Core I5', 'IdeaPad 1i Gen 7', 'Lenovo', '3199.00', '1i Intel Core I5 - 1235U, 16gb RAM, 512GB SSD, Windows 11 Home, Tela 15,6'' - 82vy000xbr - Cloudgrey', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_804714-MLU74203378589_012024-I.jpg'),
+('Notebook Asus Vivobook Go 15', 'NJ732', 'Asus', '2517.00', 'É leve. É compacto. É o ASUS Vivobook Go 15. Projetado para torná-lo produtivo e mantê-lo entretido onde quer que você vá! Com processador AMD Ryzen™ 5 7520U de excelente desempenho, 8 GB de memória RAM LPDDR5¹ e até 512 GB de SSD² , ele é perfeito para seu dia a dia.', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_689382-MLU75570682730_042024-I.jpg'),
+('Notebook Samsung Galaxy Book2 Intel Core I5-1235u, 8gb, 256gb, Windows 11 Home, 15,6 , Grafite', 'Book2', 'Samsung', '3169.00', 'Seja mais produtivo com o notebook Galaxy Book2 da Samsung, equipado para superar todas as suas expectativas. Com um processador I5 1235U de 12ª geração que oferece desempenho ágil e eficiente, cada tarefa se transforma de forma fluida e sem interrupções.', 50, 'Disponível', 'notebook', 'http://http2.mlstatic.com/D_965443-MLA72983129822_112023-I.jpg');
 
-
+-- INSERT DE games
 INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
 VALUES
 ('Sony PlayStation 4 Slim 1TB DualShock 4, 2 Controller cor preto onyx', 'PlayStation 4', 'PlayStation', '2599.00', 'O PlayStation 4 (PS4) é um console de videogame de oitava geração desenvolvido pela Sony, conhecido por seu desempenho poderoso e design elegante. Equipado com um processador de oito núcleos, gráficos avançados e 8GB de memória RAM, o PS4 oferece uma experiência de jogo fluida e imersiva. Além de uma vasta biblioteca de jogos, incluindo títulos exclusivos como The Last of Us e God of War, o PS4 suporta streaming de mídia, vídeos em 4K e reprodução de Blu-ray. Seu controle, o DualShock 4, apresenta funções inovadoras, como touchpad, alto-falante integrado e barra de luz, aprimorando a jogabilidade.', 30, 'Disponível', 'games', 'https://http2.mlstatic.com/D_645689-MLU72829561087_112023-I.jpg'),
@@ -87,7 +99,9 @@ VALUES
 ('Controle Dualshock 4 Ps4 Preto Sem Fio Sony', 'Controle Dualshock 4 Ps4', 'PlayStation', '299.90', 'O controle DualShock 4 do PS4 combina um design ergonômico com um touchpad inovador e uma barra de luz para feedback visual. Ele possui botões responsivos, um botão "Share" para capturas rápidas e conectividade Bluetooth. Inclui um alto-falante embutido e um conector para fones de ouvido, oferecendo uma experiência de jogo imersiva e prática.', 30, 'Disponível', 'games', 'https://http2.mlstatic.com/D_805382-MLA74482118754_022024-I.jpg'),
 ('Controle joystick sem fio Nintendo Switch Joy-Con (L)/(R) Neón vermelho-neón e azul-neón', 'Controle Joy-Con', 'Nintendo', '404.90', 'Os controles Joy-Con do Nintendo Switch são compactos e versáteis, permitindo uso individual ou acoplado ao console. Cada Joy-Con possui botões responsivos, um direcional analógico e sensores de movimento, com vibração HD para feedback tátil. Eles podem ser usados separadamente para jogos multiplayer ou juntos como um controle tradicional, oferecendo flexibilidade e inovação na experiência de jogo.', 30, 'Disponível', 'games', 'https://http2.mlstatic.com/D_679812-MLU72677091951_112023-I.jpg');
 
-
+-- INSERT DE relogios
+INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
+VALUES
 INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
 VALUES
 ('Apple Watch Series 9 GPS • Caixa meia-noite de alumínio – 45 mm • Pulseira esportiva meia-noite – M/G', 'Apple Watch Series 9', 'Apple', '2698.00', 'O Apple Watch Series 9 é um smartwatch elegante e avançado, com uma tela Retina mais brilhante e um processador mais rápido. Ele oferece monitoramento de saúde abrangente, como medição de frequência cardíaca e oxigênio no sangue, além de integração aprimorada com a Siri e conectividade melhorada. Disponível em várias cores e materiais, o Series 9 também é projetado com um foco em sustentabilidade.', 30, 'Disponível', 'relogio', 'http://http2.mlstatic.com/D_799492-MLU76887243958_062024-I.jpg'),
@@ -101,7 +115,9 @@ VALUES
 ('Relógio Invicta Pro Diver 100% Original + Caixa Cor Da Correia Preto Cor Do Bisel Preto Cor Do Fundo Preto', 'Relógio Invicta Pro Diver', 'Invicta', '343.00', 'O Relógio Invicta Pro Diver é um modelo 100% original que combina robustez e sofisticação. Com uma caixa preta resistente e um bisel preto de alta qualidade, este relógio possui um mostrador preto que proporciona um visual elegante e discreto. A correia preta complementa o design com conforto e durabilidade, tornando-o ideal para atividades aquáticas e uso diário. Com uma combinação de estilo e funcionalidade, o Invicta Pro Diver é perfeito para quem busca um acessório que une performance e elegância.', 30, 'Disponível', 'relogio', 'http://http2.mlstatic.com/D_607736-MLU77352996337_062024-I.jpg'),
 ('Relógio Orient Automático Masculino Dourado 469wc2f 3 Estrela Cor Da Correia Dourado Cor Do Bisel Dourado Cor Do Fundo Prateado', 'Relógio Orient Automático Masculino', 'Orient', '713.00', 'O Relógio Orient Automático Masculino 469WC2F 3 Estrela combina elegância e precisão. Com uma caixa e bisel dourados, e um mostrador prateado, este relógio oferece um visual sofisticado e luxuoso. A correia dourada completa o design com um toque de classe, enquanto o movimento automático garante precisão e confiabilidade. Ideal para ocasiões especiais e para quem aprecia um estilo refinado.', 30, 'Disponível', 'relogio', 'http://http2.mlstatic.com/D_676069-MLU69939704336_062023-I.jpg');
 
-
+-- INSERT DE headset
+INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
+VALUES
 INSERT INTO produtos (nomeProduto, modelo, marca, preco, descricao, quantidade, status_disponibilidade, categoria, url)
 VALUES
 ('Apple AirPods Pro 2° geração Branco', 'AirPods Pro 2° geração', 'Apple', '1529.15', 'Os Apple AirPods Pro de 2ª geração, na cor branca, oferecem um design ergonômico com cancelamento ativo de ruído e modo transparência. Com qualidade de som superior e até 30 horas de autonomia com o case de carregamento, são a escolha ideal para quem busca conforto e tecnologia avançada em fones de ouvido sem fio.', 30, 'Disponível', 'fone', 'http://http2.mlstatic.com/D_779146-MLA53778959612_022023-I.jpg'),
@@ -117,15 +133,32 @@ VALUES
 
 
 -- Inserção para um Administrador
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Lucas Almeida', '123.456.789-01', 'lucas.admin@empresa.com', 'teste@#', 'Admini1strador');
+INSERT INTO usuarios (nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo)  VALUES ('Testelane',"123,369,147-48","Rua do teste",54,"Testelândia","teste@teste.com","teste123@",1);
 
 -- Inserções para Clientes
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Mariana Costa', '234.567.890-12', 'mariana.costa@gmail.com', '123@', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('João Martins', '345.678.901-23', 'joao.martins@yahoo.com', '789#', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Clara Gonçalves', '456.789.012-34', 'clara.g@outlook.com', '456!', 'Clie2nte');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Roberto Silva', '567.890.123-45', 'roberto.silva@uol.com', '147@', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Fernanda Oliveira', '678.901.234-56', 'fernanda.oliveira@gmail.com', '456&', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Ricardo Sousa', '789.012.345-67', 'ricardo.sousa@gmail.com', 's258', 'Clien22te');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Juliana Pereira', '890.123.456-78', 'juliana.pereira@hotmail.com', '369*', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Carlos Eduardo', '901.234.567-89', 'carlos.e@hotmail.com', '159@', '2');
-INSERT INTO usuarios (nomeCliente, cpf, emailCliente, senha, tipo) VALUES ('Patrícia Lima', '012.345.678-90', 'patricia.lima@yahoo.com', '357$', '2');
+insert into usuarios (nomeCliente, cpf, logradouro, numero, cidade, emailCliente, senha, tipo) 
+values 
+
+("Patrícia Lima","01234567890","Rua Bela Vista",3020, "Moinhos", "Igarassu","patricia.lima@yahoo.com","357$",2),
+("Carlos Eduardo","90123456789","Avenida Soledade",298,"Caetés",'Olinda','carlos.e@hotmail.com','159@',2),
+("Juliana Pereira","89012345678","Avenida Conde Pereira",560,"Loteamento Serra","Paulista","juliana.pereira@hotmail.com","369*",2),
+("Ricardo Sousa","78901234567","Avenida Deus é fiel",63,"Jardins","São Lourenço","ricardo.sousa@gmail.com","s258",2),
+("Fernanda Oliveira","67890123456","Rua da Paz",68,"Boa Vista","Recife","fernanda.oliveira@gmail.com","456&",2),
+("Roberto Silva","56789012345","Rua Esperança",110,"Vila Rica","Jaboatão","roberto.silva@uol.com","147@",2),
+("Clara Gonçalves","45678901234","Avenida Manoel Carneiro","Cavaleiro","147,"Jaboatão","clara.g@outlook.com","456!",2),
+("João Martins","34567890123","Rua da Aurora",814,"Tejipió","Recife","joao.martins@yahoo.com","789#",2),
+("Mariana Costa","23456789012","Rua do Amor",54,"Areias","Recife","mariana.costa@gmail.com","123@",2);
+
+
+-- INSERT DE pedidos
+INSERT INTO pedidos (dataEmissao, statusPedido, idUsuario, idProduto) 
+VALUES 
+('2023-09-15', 'Processando', 201, 601),
+('2023-09-16', 'Enviado', 202, 632),
+('2023-09-17', 'Entregue', 203, 645),
+('2023-09-18', 'Cancelado', 204, 622),
+('2023-09-19', 'Processando', 205, 667),
+('2023-09-20', 'Enviado', 206, 660),
+('2023-09-21', 'Entregue', 207, 653),
+('2023-09-22', 'Cancelado', 208, 611),
+('2023-09-23', 'Processando', 209, 675);
