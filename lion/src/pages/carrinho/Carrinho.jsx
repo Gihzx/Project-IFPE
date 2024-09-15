@@ -4,14 +4,13 @@ import NavBar from "../../components/molecules/navBar/NavBar";
 import "./carrinho.css";
 
 function Carrinho() {
-  const [produtosCarrinho, setProdutosCarrinho] = useState([
-    { id: 1, nome: "Produto 1", descricao: "Descrição 1", preco: 10 },
-    { id: 2, nome: "Produto 2", descricao: "Descrição 2", preco: 11 },
-    { id: 3, nome: "Produto 3", descricao: "Descrição 3", preco: 12 },
-  ]);
+  const [produtosCarrinho, setProdutosCarrinho] = useState(() => {
+    const carrinhoSalvo = localStorage.getItem("carrinho");
+    return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+  });
 
   const [showPopup, setShowPopup] = useState(false);
-
+  const [formaPagamento, setFormaPagamento] = useState("");
   const navigate = useNavigate();
 
   const removerProduto = (id) => {
@@ -19,10 +18,12 @@ function Carrinho() {
       (produto) => produto.id !== id
     );
     setProdutosCarrinho(novosProdutos);
+    localStorage.setItem("carrinho", JSON.stringify(novosProdutos));
   };
 
   const handleConfirmPurchase = () => {
     setShowPopup(true);
+    localStorage.removeItem("carrinho");
   };
 
   const closePopup = () => {
@@ -30,80 +31,118 @@ function Carrinho() {
     navigate("/");
   };
 
+  const calcularTotal = () => {
+    return produtosCarrinho
+      .reduce((total, produto) => {
+        const precoProduto =
+          typeof produto.preco === "number"
+            ? produto.preco
+            : parseFloat(produto.preco) || 0;
+        return total + precoProduto;
+      }, 0)
+      .toFixed(2);
+  };
+
   return (
     <>
       <NavBar />
-      <div className="Conatiner-carrinho">
+      <div className="Container-carrinho">
         <div className="h1Cards">
           <h5>Seu carrinho</h5>
           <span className="produto">
-            {produtosCarrinho.map((produto) => (
-              <div key={produto.id}>
-                <div className="container-img">
-                  <img
-                    src={produto.url}
-                    alt="Produto no carrinho"
-                    className="imgCarrionho"
-                  />
-                  <div className="inforCards">
-                    <span className="valor">
-                      <h5>{produto.nomeProduto}</h5>
-                      <p className="preco">R$: {produto.preco.toFixed(2)}</p>
-                    </span>
-                    <p>{produto.descricao}</p>
-                    <p>Cor: branco</p>
-                    <button
-                      className="remover"
-                      onClick={() => removerProduto(produto.id)}
-                    >
-                      X
-                    </button>
+            {produtosCarrinho.length > 0 ? (
+              produtosCarrinho.map((produto) => (
+                <div key={produto.id}>
+                  <div className="container-img">
+                    <img
+                      src={produto.url}
+                      alt="Produto no carrinho"
+                      className="imgCarrinho"
+                    />
+                    <div className="inforCards">
+                      <span className="valor">
+                        <h5>{produto.nomeProduto}</h5>
+                        <p className="preco">
+                          R$:{" "}
+                          {typeof produto.preco === "number"
+                            ? produto.preco.toFixed(2)
+                            : parseFloat(produto.preco).toFixed(2)}
+                        </p>
+                      </span>
+                      <p>{produto.descricao}</p>
+                      <p>Cor: branco</p>{" "}
+                      <button
+                        className="remover"
+                        onClick={() => removerProduto(produto.id)}
+                      >
+                        X
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>Seu carrinho está vazio!</p>
+            )}
           </span>
         </div>
 
-        <div className="Pagamento">
-          <h5>Informações de pagamento</h5>
-          <div>
-            <p>Forma de pagamento</p>
-            <label>
-              <input type="radio" name="pagamento" value="cartaoDeb" />
-              Débito ou crédito
-            </label>
-          </div>
-          <div>
-            <label>
-              <input type="radio" name="pagamento" value="cartaoCre" />
-              Cartão Crédito
-            </label>
-          </div>
-          <div>
-            <label>
-              <input type="radio" name="pagamento" value="pix" />
-              Pix
-            </label>
-          </div>
+        {produtosCarrinho.length > 0 && (
+          <div className="Pagamento">
+            <h5>Informações de pagamento</h5>
+            <div>
+              <p>Forma de pagamento</p>
+              <label>
+                <input
+                  type="radio"
+                  name="pagamento"
+                  value="cartaoDeb"
+                  onChange={(e) => setFormaPagamento(e.target.value)}
+                />
+                Débito ou crédito
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="pagamento"
+                  value="cartaoCre"
+                  onChange={(e) => setFormaPagamento(e.target.value)}
+                />
+                Cartão Crédito
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="pagamento"
+                  value="pix"
+                  onChange={(e) => setFormaPagamento(e.target.value)}
+                />
+                Pix
+              </label>
+            </div>
 
-          <h6>Informações do cartão</h6>
-          <label>Nome no cartão</label>
-          <input type="text" placeholder="Gabriella Rocha Fernandes" />
-          <label>Número do cartão</label>
-          <input type="text" placeholder="5061 2345 6789 1235" />
-          <div>
-            <input type="date" className="input" />
-            <input type="text" />
+            <h6>Informações do cartão</h6>
+            <label>Nome no cartão</label>
+            <input type="text" placeholder="Gabriella Rocha Fernandes" />
+            <label>Número do cartão</label>
+            <input type="text" placeholder="5061 2345 6789 1235" />
+            <div>
+              <input type="date" className="input" />
+              <input type="text" placeholder="CVV" />
+            </div>
+            <div>
+              <h6>Valor total</h6>
+              <p>R$ {calcularTotal()}</p>
+            </div>
+            <button className="confirmar-btn" onClick={handleConfirmPurchase}>
+              Confirmar Compra
+            </button>
           </div>
-          <div>
-            <h6>Valor total</h6>
-            <p>105,99</p>
-          </div>
-          <button className="confirmar-btn" onClick={handleConfirmPurchase}>
-            Confirmar Compra
-          </button>
-        </div>
+        )}
       </div>
 
       {showPopup && (

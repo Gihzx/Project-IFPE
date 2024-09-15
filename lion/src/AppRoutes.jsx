@@ -31,8 +31,6 @@ function AppRoutes() {
         <Route path="/produtoPages" element={<ProdutosPages />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/carrossel" element={<Carrosel />} />
-        {/* Remover a rota abaixo para evitar conflito */}
-        {/* <Route path="/descricao" element={<DescricaoProduto />} /> */}
         <Route path="/descricao/:idProduto" element={<DescricaoProduto />} />
       </Routes>
     </BrowserRouter>

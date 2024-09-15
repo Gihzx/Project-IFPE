@@ -8,7 +8,7 @@
   justify-content: space-between;
   background-color: #0d1321;
   font-family: "montserrat";
-  z-index: 100; /* Para garantir que fique sobre outros elementos */
+  z-index: 100;
 }
 
 .logo {
@@ -46,21 +46,21 @@
 
 .menu input {
   padding: 4px;
-  width: 100%; /* Ajuste para que o input não fique exageradamente largo */
+  width: 100%;
   border: none;
   outline: none;
-  border-radius: 18px;
+  border-radius: 2rem;
   background-color: #fff;
 }
 
 .laranja {
   position: fixed;
-  top: 50px; /* Ajuste conforme a posição desejada em relação ao .containerb */
+  top: 50px;
   left: 0;
   width: 100%;
   height: 3vh;
   background-color: #ff6f59;
-  z-index: 99; /* Para que a .laranja fique abaixo da navbar */
+  z-index: 99;
 }
 
 .cartCarrinho {
