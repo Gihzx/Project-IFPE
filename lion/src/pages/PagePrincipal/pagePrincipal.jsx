@@ -1,14 +1,9 @@
 import "./style.css";
-import NavHome from "../../components/molecules/navBarHome/navHome";
 import imgSection from "../../assets/relogio-ifpe-removebg-preview.png";
 import img2 from "../../assets/Captura_de_tela_2024-09-03_012654-removebg-preview.png";
-import Carrosel from "../../components/molecules/carrossel/Carrosel";
 import img3 from "../../assets/Captura_de_tela_2024-09-04_032853-removebg-preview.png";
-import SectionHome from "../../components/molecules/sectionHome/SectionHome";
-import Footer from "../../components/molecules/footer/footer";
-import SectionCompras from "../../components/molecules/sectionCompras";
-import PreFooter from "../../components/molecules/preFooter/PreFooter";
 import { useEffect, useState } from "react";
+
 function PagePrincipal() {
   const [imagenAtual, setimagenAtual] = useState(imgSection);
   const images = [imgSection, img2, img3];
@@ -34,7 +29,6 @@ function PagePrincipal() {
 
   return (
     <>
-      <NavHome />
       <main className="section-one">
         <div className="text-section-one">
           <div>
@@ -46,16 +40,7 @@ function PagePrincipal() {
         </div>
       </main>
       <div className="rowOorage"></div>
-      <section>
-        <div className="photo-h1">
-          <h2>Navegador por categria</h2>
-          <Carrosel />
-        </div>
-      </section>
-      <SectionCompras />
-      <SectionHome />
-      <PreFooter />
-      <Footer />
+      <section></section>
     </>
   );
 }

@@ -31,7 +31,9 @@ function DescricaoProduto() {
     if (produtoSelecionado) {
       const novoCarrinho = [...carrinho, produtoSelecionado];
       setCarrinho(novoCarrinho);
+
       localStorage.setItem("carrinho", JSON.stringify(novoCarrinho));
+      alert("Produto adicionado");
       console.log("Produto adicionado ao carrinho:", produtoSelecionado);
     }
   };
