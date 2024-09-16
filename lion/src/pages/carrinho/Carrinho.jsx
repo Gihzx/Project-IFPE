@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/molecules/navBar/NavBar";
 import "./carrinho.css";
 
 function Carrinho() {
+  const [editing, setEditing] = useState(null);
   const [produtosCarrinho, setProdutosCarrinho] = useState(() => {
     const carrinhoSalvo = localStorage.getItem("carrinho");
     return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
@@ -14,12 +15,19 @@ function Carrinho() {
   const navigate = useNavigate();
 
   const removerProduto = (id) => {
+    console.log("Removendo produto com ID:", id);
     const novosProdutos = produtosCarrinho.filter(
       (produto) => produto.id !== id
     );
+    console.log("Produtos após remoção:", novosProdutos);
     setProdutosCarrinho(novosProdutos);
     localStorage.setItem("carrinho", JSON.stringify(novosProdutos));
+    console.log("LocalStorage atualizado:", localStorage.getItem("carrinho"));
   };
+
+  useEffect(() => {
+    handleUpdate();
+  }, []);
 
   const handleConfirmPurchase = () => {
     setShowPopup(true);
@@ -29,6 +37,9 @@ function Carrinho() {
   const closePopup = () => {
     setShowPopup(false);
     navigate("/");
+  };
+  const handleUpdate = async () => {
+    await api.put(`/:idProduto${editing.idProduto}`);
   };
 
   const calcularTotal = () => {
