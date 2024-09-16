@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../../components/molecules/navBar/NavBar";
 import "./carrinho.css";
+import api from "../../api";
 
 function Carrinho() {
-  const [editing, setEditing] = useState(null);
   const [produtosCarrinho, setProdutosCarrinho] = useState(() => {
     const carrinhoSalvo = localStorage.getItem("carrinho");
     return carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
@@ -15,31 +15,52 @@ function Carrinho() {
   const navigate = useNavigate();
 
   const removerProduto = (id) => {
-    console.log("Removendo produto com ID:", id);
     const novosProdutos = produtosCarrinho.filter(
       (produto) => produto.id !== id
     );
-    console.log("Produtos após remoção:", novosProdutos);
     setProdutosCarrinho(novosProdutos);
     localStorage.setItem("carrinho", JSON.stringify(novosProdutos));
-    console.log("LocalStorage atualizado:", localStorage.getItem("carrinho"));
   };
 
-  useEffect(() => {
-    handleUpdate();
-  }, []);
+  const handleUpdate = async (idProduto, novaQuantidade) => {
+    try {
+      if (!idProduto) {
+        throw new Error("ID do produto não definido");
+      }
 
-  const handleConfirmPurchase = () => {
+      const response = await api.put(`/produtos/${idProduto}`, {
+        quantidade: novaQuantidade,
+      });
+
+      // Atualiza o estado local após a resposta da API
+      setProdutosCarrinho((produtos) =>
+        produtos.map((produto) =>
+          produto.id === idProduto
+            ? { ...produto, quantidade: novaQuantidade }
+            : produto
+        )
+      );
+    } catch (error) {
+      console.error("Erro ao atualizar o produto:", error);
+    }
+  };
+
+  const handleConfirmPurchase = async () => {
     setShowPopup(true);
+
+    for (const produto of produtosCarrinho) {
+      const novaQuantidade = produto.quantidade - 1;
+
+      await handleUpdate(produto.id, novaQuantidade);
+    }
+
     localStorage.removeItem("carrinho");
+    setProdutosCarrinho([]);
   };
 
   const closePopup = () => {
     setShowPopup(false);
     navigate("/");
-  };
-  const handleUpdate = async () => {
-    await api.put(`/:idProduto${editing.idProduto}`);
   };
 
   const calcularTotal = () => {
@@ -60,7 +81,7 @@ function Carrinho() {
       <div className="Container-carrinho">
         <div className="h1Cards">
           <h5>Seu carrinho</h5>
-          <span className="produto">
+          <div className="produto">
             {produtosCarrinho.length > 0 ? (
               produtosCarrinho.map((produto) => (
                 <div key={produto.id}>
@@ -81,7 +102,7 @@ function Carrinho() {
                         </p>
                       </span>
                       <p>{produto.descricao}</p>
-                      <p>Cor: branco</p>{" "}
+                      <p>Cor: branco</p>
                       <button
                         className="remover"
                         onClick={() => removerProduto(produto.id)}
@@ -95,7 +116,7 @@ function Carrinho() {
             ) : (
               <p>Seu carrinho está vazio!</p>
             )}
-          </span>
+          </div>
         </div>
 
         {produtosCarrinho.length > 0 && (
