@@ -14,9 +14,9 @@ function Carrinho() {
   const [formaPagamento, setFormaPagamento] = useState("");
   const navigate = useNavigate();
 
-  const removerProduto = (id) => {
+  const removerProduto = (idProduto) => {
     const novosProdutos = produtosCarrinho.filter(
-      (produto) => produto.id !== id
+      (produto) => produto.idProduto !== idProduto
     );
     setProdutosCarrinho(novosProdutos);
     localStorage.setItem("carrinho", JSON.stringify(novosProdutos));
@@ -32,10 +32,9 @@ function Carrinho() {
         quantidade: novaQuantidade,
       });
 
-      // Atualiza o estado local após a resposta da API
       setProdutosCarrinho((produtos) =>
         produtos.map((produto) =>
-          produto.id === idProduto
+          produto.idProduto === idProduto
             ? { ...produto, quantidade: novaQuantidade }
             : produto
         )
@@ -45,18 +44,39 @@ function Carrinho() {
     }
   };
 
-  const handleConfirmPurchase = async () => {
-    setShowPopup(true);
-
-    for (const produto of produtosCarrinho) {
-      const novaQuantidade = produto.quantidade - 1;
-
-      await handleUpdate(produto.id, novaQuantidade);
-    }
-
-    localStorage.removeItem("carrinho");
-    setProdutosCarrinho([]);
+  const handleQuantidadeChange = (idProduto, novaQuantidade) => {
+    const novosProdutos = produtosCarrinho.map((produto) => {
+      if (produto.idProduto === idProduto) {
+        return { ...produto, quantidade: novaQuantidade };
+      }
+      return produto;
+    });
+    setProdutosCarrinho(novosProdutos);
+    localStorage.setItem("carrinho", JSON.stringify(novosProdutos));
   };
+
+  const handleConfirmPurchase = async () => {
+  setShowPopup(true);
+
+  try {
+    // Supondo que o usuário selecionou apenas um produto no carrinho
+    const produtoSelecionado = produtosCarrinho[0]; // O produto que está no carrinho
+    const response = await api.post('/pedidos/confirmar', {
+      dataEmissao: new Date(),
+      statusPedido: 'confirmado',
+      idUsuario: usuario.idUsuario, 
+      idProduto: produtoSelecionado.idProduto,
+      quantidade: produtoSelecionado.quantidade
+    });
+
+    if (response.status === 200) {
+      localStorage.removeItem("carrinho");
+      setProdutosCarrinho([]);
+    }
+  } catch (error) {
+    console.error("Erro ao enviar pedido:", error);
+  }
+};
 
   const closePopup = () => {
     setShowPopup(false);
@@ -70,7 +90,7 @@ function Carrinho() {
           typeof produto.preco === "number"
             ? produto.preco
             : parseFloat(produto.preco) || 0;
-        return total + precoProduto;
+        return total + precoProduto * produto.quantidade;
       }, 0)
       .toFixed(2);
   };
@@ -84,7 +104,7 @@ function Carrinho() {
           <div className="produto">
             {produtosCarrinho.length > 0 ? (
               produtosCarrinho.map((produto) => (
-                <div key={produto.id}>
+                <div key={produto.idProduto}>
                   <div className="container-img">
                     <img
                       src={produto.url}
@@ -101,11 +121,23 @@ function Carrinho() {
                             : parseFloat(produto.preco).toFixed(2)}
                         </p>
                       </span>
-                      <p>{produto.descricao}</p>
-                      <p>Cor: branco</p>
+                      <p>
+                        Quantidade:{" "}
+                        <input
+                          type="number"
+                          value={produto.quantidade}
+                          min="1"
+                          onChange={(e) =>
+                            handleQuantidadeChange(
+                              produto.idProduto,
+                              parseInt(e.target.value, 10)
+                            )
+                          }
+                        />
+                      </p>
                       <button
                         className="remover"
-                        onClick={() => removerProduto(produto.id)}
+                        onClick={() => removerProduto(produto.idProduto)}
                       >
                         X
                       </button>
@@ -173,6 +205,7 @@ function Carrinho() {
             <button className="confirmar-btn" onClick={handleConfirmPurchase}>
               Confirmar Compra
             </button>
+
           </div>
         )}
       </div>
