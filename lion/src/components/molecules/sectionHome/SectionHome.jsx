@@ -7,7 +7,7 @@ function SectionHome() {
         <div className="section-oferta">
           <div>
             <h1>Até 25% de desconto, confira!</h1>
-            <button className="bntComprar1">Compre já</button>
+            {/* <button className="bntComprar1">Compre já</button> */}
           </div>
           <div>
             <img src={iphone} alt="iphone" />

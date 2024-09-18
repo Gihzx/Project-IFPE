@@ -43,6 +43,7 @@ function Carrosel({setCategory}) {
       descricao: "Descrição 5",
       preco: 13,
       imagem: "https://http2.mlstatic.com/D_963756-MLU75422084542_042024-T.jpg",
+      categoria:"tablet"
     },
     {
       id: 6,

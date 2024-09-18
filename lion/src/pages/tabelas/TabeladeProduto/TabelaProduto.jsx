@@ -163,7 +163,7 @@ function TabelaProduto() {
               </select>
               <input
                 type="text"
-                placeholder="Ficha Técnica"
+                placeholder="URL"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
               />

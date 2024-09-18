@@ -59,8 +59,7 @@ function Carrinho() {
   setShowPopup(true);
 
   try {
-    // Supondo que o usuário selecionou apenas um produto no carrinho
-    const produtoSelecionado = produtosCarrinho[0]; // O produto que está no carrinho
+    const produtoSelecionado = produtosCarrinho[0]; 
     const response = await api.post('/pedidos/confirmar', {
       dataEmissao: new Date(),
       statusPedido: 'confirmado',

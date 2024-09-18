@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Importa o hook para redirecionamento
+import { useNavigate } from "react-router-dom"; 
 import Card from "./components/atoms/Card";
 import api from "./api";
 
 function Home({ searchTerm = "", category = "" }) {
   const [produtos, setProdutos] = useState([]);
-  const navigate = useNavigate(); // Hook para redirecionar para outra rota
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     handleFecht();
@@ -34,14 +34,14 @@ function Home({ searchTerm = "", category = "" }) {
       : true;
   });
 
-  // Exibe os produtos filtrados por busca se houver um termo no searchTerm, caso contrário exibe por categoria
+  
   const produtosParaMostrar = searchTerm
     ? filteredProducts
     : filteredCategories;
 
-  // Função para redirecionar ao clicar no produto
+ 
   const handleProdutoClick = (idProduto) => {
-    navigate(`/descricao/${idProduto}`); // Redireciona para a página de detalhes do produto
+    navigate(`/descricao/${idProduto}`); 
   };
 
   return (

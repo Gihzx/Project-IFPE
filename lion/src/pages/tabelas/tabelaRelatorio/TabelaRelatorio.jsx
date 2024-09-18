@@ -6,12 +6,6 @@ function TabelaRelatorio() {
       <NavBar />
       <div className="ContainerTabela">
         <div className="item">
-          <Link to="/relatorio">
-            <span>Relatorio</span>
-          </Link>
-        </div>
-
-        <div className="item">
           <Link to="/estoque">
             <span>Estoque</span>
           </Link>

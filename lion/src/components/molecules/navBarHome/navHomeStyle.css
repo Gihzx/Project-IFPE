@@ -30,21 +30,4 @@
   align-items: center;
   gap: 25px;
 }
-.login {
-  border: none;
 
-  margin-bottom: 7px;
-  color: #f4f5f7;
-  border-radius: 5px;
-  padding: 3px 20px 3px 20px;
-  background-color: #0d1321;
-}
-.cadastrar {
-  border: none;
-  
-  margin-bottom: 7px;
-  color: #f4f5f7;
-  border-radius: 5px;
-  padding: 3px 20px 3px 20px;
-  background-color:  #0d1321;
-}

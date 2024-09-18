@@ -10,7 +10,7 @@ function PagePrincipal() {
   useEffect(() => {
     let indexImg = 0;
     const chageImage = () => {
-      //funcção de mundaça de imagen
+      
       indexImg = (indexImg + 1) % images.length;
       setimagenAtual(images[indexImg]);
     };
@@ -34,7 +34,7 @@ function PagePrincipal() {
           <div>
             <h1>Lion Eletronics</h1>
             <h2>Um mundo de possibilidade para sua compra</h2>
-            <button className="bntComprar">Compre já</button>
+            {/* <button className="bntComprar">Compre já</button> */}
           </div>
           <img src={imagenAtual} alt="img" className="avata" />
         </div>
